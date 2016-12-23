@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link href="https://fonts.googleapis.com/css?family=Nunito:700" rel="stylesheet">
+	<title>Jacob Gornall</title>
+	<!-- Latest compiled and minified Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/styles.css')}}">
+
+	{{ JSGlue.include() }}
+</head>
+<body style="background-image: url({{url_for('static', filename='images/nduplkyrxqu-elena-prokofyeva.jpg')}});">
+	<header class="container">
+		<nav class="row text-center">
+			<div id="home" class="col-md-3" data-bind="click: homePage">
+				<h3>Home</h3>
+			</div>
+			<div id="projects" class="col-md-3" data-bind="click: projectsPage">
+				<h3>Projects</h3>
+			</div>
+			<div id="contact" class="col-md-3" data-bind="click: contactPage">
+				<h3>Contact</h3>
+			</div>
+			<div id="resume" class="col-md-3" data-bind="click: resumePage">
+				<h3>Resume</h3>
+			</div>
+		</nav>		
+	</header>
+
+	<main>
+		<header id="nameBanner">
+			<h1>JAKE GORNALL</h1>
+			<p>Full Stack Web Developer</p>
+			<p><a href="https://github.com/jakegornall">Github</a> - <a href="https://www.linkedin.com/in/jake-gornall-a4697283">LinkedIn</a> - <a href="https://profiles.udacity.com/u/jakegornall">Udacity</a></p>
+		</header>
+		<div class="container">
+			<div class="row text-center">
+				<div class="col-md-4 project">
+					<div class="project-content">
+						<div class="project-header">
+							<h1>Jacob Lones Website</h1>
+						</div>
+						<div class="project-body">
+							<p>Click to see more about this project...</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 project">
+					<div class="project-content">
+						<div class="project-header">
+							<h1>Map Web App</h1>
+						</div>
+						<div class="project-body">
+							<p>Click to see more about this project...</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 project">
+					<div class="project-content">
+						<div class="project-header">
+							<h1>Blog Site</h1>
+						</div>
+						<div class="project-body">
+							<p>Click to see more about this project...</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div>
+			<p>Photograph by <a href="https://unsplash.com/@leni_eleni">Elena Prokofyeva</a></p>
+		</div>
+	</main>
+
+	<!-- jQuery 3.x -->
+	<script
+  	src="https://code.jquery.com/jquery-3.1.1.min.js"
+  	integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  	crossorigin="anonymous"></script>
+
+	<!-- Latest compiled and minified Bootstrap JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+	<!-- Knockout.js -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.1/knockout-min.js"></script>
+
+	<!-- app.js -->
+	<script type="text/javascript" src="{{url_for('static', filename='js/app.js')}}"></script>
+</body>
+</html>

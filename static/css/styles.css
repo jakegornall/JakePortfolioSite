@@ -1,0 +1,82 @@
+html, body, header {
+	margin: 0px;
+	padding: 0px;
+	font-family: 'Nunito', sans-serif;
+}
+
+.container {
+	width: 100%;
+}
+
+nav {
+	background-color: #166188;
+	color: white;
+	opacity: .7;
+	min-height: 50px;
+    -webkit-box-shadow: 1px 2px 14px -1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 1px 2px 14px -1px rgba(0,0,0,0.75);
+    box-shadow: 1px 2px 14px -1px rgba(0,0,0,0.75);
+}
+
+nav h3 {
+	margin: 10px;
+}
+nav div {
+	border-bottom: 3px solid #166188;
+	transition: border-bottom-color .5s ease;
+}
+nav div:hover {
+	border-bottom-color: #f47900;
+	cursor: pointer;
+}
+
+a {
+	color: white;
+}
+a:hover {
+	color: #f47900;
+}
+
+body {
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+main header {
+	color: white;
+	text-align: center;
+	background-color: #166188;
+	opacity: .7;
+	padding: 50px;
+	margin-top: 100px;
+}
+
+main header h1 {
+	font-size: 75px;
+	margin: auto;
+	opacity: 1;
+}
+
+.project {
+	padding: 20px;
+	opacity: .9;
+}
+.project-content {
+	background-color: #166188;
+	border-radius: 3px;
+	-webkit-box-shadow: 1px 2px 14px -1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 1px 2px 14px -1px rgba(0,0,0,0.75);
+    box-shadow: 1px 2px 14px -1px rgba(0,0,0,0.75);
+}
+.project-content:hover {
+
+}
+.project-header {
+	color: white;
+	padding: 5px;
+	border-bottom: 3px solid midnightblue;
+}
+.project-body {
+	color: white;
+	padding: 5px;
+}
