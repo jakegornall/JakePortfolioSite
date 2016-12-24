@@ -42,8 +42,11 @@ KNOCKOUT.JS VIEWMODEL
 function ViewModel() {
 	// tracks which page state is current activated.
 	this.currentPage = ko.observable('home');
+
+	// Animates the site to the home page.
 	this.homePage = function() {
 		closeResumeModal();
+		closeContactModal();
 		$nameBanner.animate({
 			'margin-top': '100px',
 			'padding': '50px'
@@ -51,11 +54,13 @@ function ViewModel() {
 		$projects.animate({
 			'height': '150px'
 		});
-		closeContactModal();
 		this.currentPage('home');
 	}
+
+	// Animates the site to the projects page.
 	this.projectsPage = function() {
 		closeResumeModal();
+		closeContactModal();
 		$nameBanner.animate({
 			'margin-top': '0px',
 			'padding': '5px'
@@ -63,9 +68,10 @@ function ViewModel() {
 		$projects.animate({
 			'height': '400px'
 		});
-		closeContactModal();
 		this.currentPage('projects');
 	}
+
+	// Animates the site to the contact page.
 	this.contactPage = function() {
 		closeResumeModal();
 		lowerMainContent();
@@ -74,8 +80,9 @@ function ViewModel() {
 			'height': '80%'
 		});
 		this.currentPage('contact');
-
 	}
+
+	// Animates the site to the resume page.
 	this.resumePage = function() {
 		closeContactModal();
 		lowerMainContent();
@@ -83,6 +90,32 @@ function ViewModel() {
 			'left': '0px'
 		});
 		this.currentPage('resume');
+	}
+
+	// Processes and sends contact form data to server.
+	this.contactFormProcess = function(formElement) {
+		var full_name = $('#full_name').value();
+		var email = $('#email').value();
+		var message = $('#message').value();
+
+		var data = {
+			'full_name': full_name,
+			'email': email,
+			'message': message
+		}
+
+		$.ajax({
+			url: Flask.url_for('/contact'),
+			type: 'POST',
+			dataType: 'json',
+			data: data,
+			success: function(response) {
+
+			},
+			error: function() {
+				
+			}
+		});
 	}
 }
 ko.applyBindings(ViewModel);

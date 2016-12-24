@@ -90,6 +90,8 @@ main header h1 {
 
 #contact-modal {
 	background-color: #166188;
+	color: white;
+	padding: 20px;
 	position: fixed;
 	left: 20px;
 	top: 70px;
@@ -101,6 +103,9 @@ main header h1 {
 	-webkit-box-shadow: 1px 2px 14px -1px rgba(0,0,0,0.75);
     -moz-box-shadow: 1px 2px 14px -1px rgba(0,0,0,0.75);
     box-shadow: 1px 2px 14px -1px rgba(0,0,0,0.75);
+}
+#contact-form input, textarea {
+	color: black;
 }
 
 #resume-container {
@@ -114,8 +119,12 @@ main header h1 {
 #resume-modal {
 	background-color: #166188;
 	padding: 20px;
+	border-radius: 3px;
 	margin: auto;
 	overflow: hidden;
 	width: 90%;
 	height: 90%;
+	-webkit-box-shadow: 1px 2px 14px -1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 1px 2px 14px -1px rgba(0,0,0,0.75);
+    box-shadow: 1px 2px 14px -1px rgba(0,0,0,0.75);
 }
