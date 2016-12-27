@@ -69,14 +69,35 @@ main header h1 {
 .project-content {
 	background-color: #166188;
 	border-radius: 3px;
-	-webkit-box-shadow: 1px 2px 14px -1px rgba(0,0,0,0.75);
+	height: 120px;
+	opacity: 1;
+	-webkit-box-shadow: 1px 5px 14px -1px rgba(0,0,0,0.75);
     -moz-box-shadow: 1px 2px 14px -1px rgba(0,0,0,0.75);
     box-shadow: 1px 2px 14px -1px rgba(0,0,0,0.75);
-    transition: margin-top .5s ease;
+    transition: margin-top .5s ease, box-shadow .5s ease;
 }
 .project-content:hover {
 	margin-top: -10px;
 	cursor: pointer;
+	-webkit-box-shadow: 1px 10px 15px 5px rgba(0,0,0,0.25);
+    -moz-box-shadow: 1px 10px 15px 5px rgba(0,0,0,0.25);
+    box-shadow: 1px 10px 15px 5px rgba(0,0,0,0.25);
+}
+.project-content:hover .project-img {
+	opacity: .2;
+}
+.project-content p {
+	opacity: 0;
+	margin-top: 20px;
+	transition: opacity .5s ease, margin-top .5s ease;
+}
+.project-content:hover p {
+	opacity: 1;
+	margin-top: 5px;
+}
+.project-content:hover h6 {
+	opacity: 1;
+	top: 190px;
 }
 .project-header {
 	color: white;
@@ -86,6 +107,25 @@ main header h1 {
 .project-body {
 	color: white;
 	padding: 5px;
+	overflow: hidden;
+}
+.project-image-container {
+	background-color: black;
+}
+.project-img {
+	overflow-y: hidden;
+	display: none;
+	width: 100%;
+	transition: opacity .5s ease;
+}
+.project-image-container h6 {
+	font-size: 25px;
+	position: absolute;
+	display: none;
+	left: 25%;
+	top: 200px;
+	opacity: 0;
+	transition: opacity .5s ease, top .5s ease;
 }
 
 #contact-modal {

@@ -12,6 +12,9 @@ var $nameBanner = $('#nameBanner');
 var $projects = $('.project-content');
 var $contactModal = $('#contact-modal');
 var $resumeContainer = $('#resume-container');
+var $projectImg = $('.project-img');
+var $projectClickHere = $('.project-content p');
+var $projectClickImage = $('.project-content h6');
 
 /***************
 GLOBAL FUNCTIONS
@@ -41,61 +44,68 @@ function closeResumeModal() {
 KNOCKOUT.JS VIEWMODEL
 *********************/
 function ViewModel() {
+	var self = this;
+
 	// tracks which page state is current activated.
-	this.currentPage = ko.observable('home');
+	self.currentPage = ko.observable('home');
 
 	// Animates the site to the home page.
-	this.homePage = function() {
+	self.homePage = function() {
 		closeResumeModal();
 		closeContactModal();
+		$projectClickHere.show();
+		$projectClickImage.hide();
+		$projectImg.fadeOut();
 		$nameBanner.animate({
 			'margin-top': '100px',
 			'padding': '50px'
 		});
 		$projects.animate({
-			'height': '150px'
+			'height': '120px'
 		});
-		this.currentPage('home');
+		self.currentPage('home');
 	}
 
 	// Animates the site to the projects page.
-	this.projectsPage = function() {
+	self.projectsPage = function() {
 		closeResumeModal();
 		closeContactModal();
+		$projectClickHere.hide();
+		$projectClickImage.show();
 		$nameBanner.animate({
 			'margin-top': '0px',
 			'padding': '5px'
 		});
-		$projects.animate({
-			'height': '500px'
-		});
-		this.currentPage('projects');
+		$projects.css('height', 'auto');
+		$projectImg.fadeIn();
+		self.currentPage('projects');
 	}
 
 	// Animates the site to the contact page.
-	this.contactPage = function() {
+	self.contactPage = function() {
 		closeResumeModal();
 		lowerMainContent();
+		$projectImg.fadeOut();
 		$contactModal.animate({
 			'width': '80%',
 			'height': '80%',
 			'padding': '20px'
 		});
-		this.currentPage('contact');
+		self.currentPage('contact');
 	}
 
 	// Animates the site to the resume page.
-	this.resumePage = function() {
+	self.resumePage = function() {
 		closeContactModal();
 		lowerMainContent();
 		$resumeContainer.animate({
 			'left': '0px'
 		});
-		this.currentPage('resume');
+		self.currentPage('resume');
 	}
 
 	// Processes and sends contact form data to server.
-	this.contactFormProcess = function(formElement) {
+	self.contactFormProcess = function(formElement) {
 		var full_name = $('#full_name').value();
 		var email = $('#email').value();
 		var message = $('#message').value();
