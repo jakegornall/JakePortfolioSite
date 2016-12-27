@@ -19,7 +19,8 @@ GLOBAL FUNCTIONS
 function closeContactModal() {
 	$contactModal.animate({
 		'width': '0px',
-		'height': '0px'
+		'height': '0px',
+		'padding': '0px'
 	});	
 }
 
@@ -66,7 +67,7 @@ function ViewModel() {
 			'padding': '5px'
 		});
 		$projects.animate({
-			'height': '400px'
+			'height': '500px'
 		});
 		this.currentPage('projects');
 	}
@@ -77,7 +78,8 @@ function ViewModel() {
 		lowerMainContent();
 		$contactModal.animate({
 			'width': '80%',
-			'height': '80%'
+			'height': '80%',
+			'padding': '20px'
 		});
 		this.currentPage('contact');
 	}

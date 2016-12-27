@@ -91,7 +91,7 @@ main header h1 {
 #contact-modal {
 	background-color: #166188;
 	color: white;
-	padding: 20px;
+	padding: 0px;
 	position: fixed;
 	left: 20px;
 	top: 70px;
