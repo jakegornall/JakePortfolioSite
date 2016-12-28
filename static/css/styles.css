@@ -109,9 +109,6 @@ main header h1 {
 	padding: 5px;
 	overflow: hidden;
 }
-.project-image-container {
-	background-color: black;
-}
 .project-img {
 	overflow-y: hidden;
 	display: none;
@@ -146,6 +143,11 @@ main header h1 {
 }
 #contact-form input, textarea {
 	color: black;
+	max-width: 100%;
+	width: 600px;
+}
+#contact-form textarea {
+	height: 70px;
 }
 
 #resume-container {

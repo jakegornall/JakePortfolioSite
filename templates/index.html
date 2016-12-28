@@ -88,6 +88,8 @@
 		<!-- Contact Modal -->
 		<div id="contact-modal">
 			<h1>Contact Modal</h1>
+			<img id="loader" src="{{url_for('static', filename='images/ajax-loader.gif')}}" style="display: none">
+			<p id="contact-form-msg"></p>
 			<form id="contact-form" data-bind="submit: contactFormProcess">
 				<label>
 					Full Name:

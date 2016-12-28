@@ -7,7 +7,7 @@ var $projectsButton = $('#projects');
 var $contactButton = $('#contact');
 var $resumeButton = $('#resume');
 
-// Main content elements.
+// jQuery selecters.
 var $nameBanner = $('#nameBanner');
 var $projects = $('.project-content');
 var $contactModal = $('#contact-modal');
@@ -15,6 +15,9 @@ var $resumeContainer = $('#resume-container');
 var $projectImg = $('.project-img');
 var $projectClickHere = $('.project-content p');
 var $projectClickImage = $('.project-content h6');
+var $contactForm = $('#contact-form');
+var $contactFormLoader = $('#loader');
+var $contactFormMessage = $('#contact-form-msg');
 
 /***************
 GLOBAL FUNCTIONS
@@ -62,7 +65,7 @@ function ViewModel() {
 		});
 		$projects.animate({
 			'height': '120px'
-		});
+		}, 600);
 		self.currentPage('home');
 	}
 
@@ -85,9 +88,8 @@ function ViewModel() {
 	self.contactPage = function() {
 		closeResumeModal();
 		lowerMainContent();
-		$projectImg.fadeOut();
 		$contactModal.animate({
-			'width': '80%',
+			'width': '20%',
 			'height': '80%',
 			'padding': '20px'
 		});
@@ -105,10 +107,12 @@ function ViewModel() {
 	}
 
 	// Processes and sends contact form data to server.
-	self.contactFormProcess = function(formElement) {
-		var full_name = $('#full_name').value();
-		var email = $('#email').value();
-		var message = $('#message').value();
+	self.contactFormProcess = function() {
+		$contactForm.hide();
+		$contactFormLoader.show();
+		var full_name = $('#full_name').val();
+		var email = $('#email').val();
+		var message = $('#message').val();
 
 		var data = {
 			'full_name': full_name,
@@ -117,15 +121,17 @@ function ViewModel() {
 		}
 
 		$.ajax({
-			url: Flask.url_for('/contact'),
+			url: Flask.url_for('contact'),
 			type: 'POST',
 			dataType: 'json',
 			data: data,
 			success: function(response) {
-
+				$contactFormLoader.hide();
+				$contactFormMessage.text(response.message);
 			},
 			error: function() {
-				
+				$contactFormLoader.hide();
+				$contactFormMessage.text('An error occurred. Please try again later.')
 			}
 		});
 	}
