@@ -118,13 +118,14 @@ function ViewModel() {
 			'full_name': full_name,
 			'email': email,
 			'message': message
-		}
+		};
 
 		$.ajax({
 			url: Flask.url_for('contact'),
 			type: 'POST',
 			dataType: 'json',
-			data: data,
+			contentType: 'application/json',
+			data: JSON.stringify(data),
 			success: function(response) {
 				$contactFormLoader.hide();
 				$contactFormMessage.text(response.message);
