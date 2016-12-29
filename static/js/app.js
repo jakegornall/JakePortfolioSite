@@ -20,6 +20,11 @@ var $contactFormLoader = $('#loader');
 var $contactFormMessage = $('#contact-form-msg');
 
 /***************
+GLOBAL VARIABLES
+****************/
+var currentPage = ko.observable('HOME');
+
+/***************
 GLOBAL FUNCTIONS
 ****************/
 function closeContactModal() {
@@ -49,9 +54,6 @@ KNOCKOUT.JS VIEWMODEL
 function ViewModel() {
 	var self = this;
 
-	// tracks which page state is current activated.
-	self.currentPage = ko.observable('home');
-
 	// Animates the site to the home page.
 	self.homePage = function() {
 		closeResumeModal();
@@ -66,7 +68,7 @@ function ViewModel() {
 		$projects.animate({
 			'height': '120px'
 		}, 600);
-		self.currentPage('home');
+		currentPage('home');
 	}
 
 	// Animates the site to the projects page.
@@ -81,7 +83,7 @@ function ViewModel() {
 		});
 		$projects.css('height', 'auto');
 		$projectImg.fadeIn();
-		self.currentPage('projects');
+		currentPage('projects');
 	}
 
 	// Animates the site to the contact page.
@@ -93,7 +95,7 @@ function ViewModel() {
 			'height': '80%',
 			'padding': '20px'
 		});
-		self.currentPage('contact');
+		currentPage('contact');
 	}
 
 	// Animates the site to the resume page.
@@ -103,7 +105,7 @@ function ViewModel() {
 		$resumeContainer.animate({
 			'left': '0px'
 		});
-		self.currentPage('resume');
+		currentPage('resume');
 	}
 
 	// Processes and sends contact form data to server.
@@ -149,20 +151,25 @@ $(document).ready(function() {
 
 	if (windowWidth < 992) {
 		$navContainer.scroll(function() {
-			if ($navContainer.scrollLeft() === 0) {
+			var scrollPos = $navContainer.scrollLeft();
+			if (scrollPos < windowWidth  && currentPage() !== 'HOME') {
 				closeResumeModal();
 				closeContactModal();
 				$projectClickHere.show();
 				$projectClickImage.hide();
 				$projectImg.fadeOut();
 				$nameBanner.animate({
-					'margin-top': '100px',
+					'margin-top': '5px',
 					'padding': '50px'
 				});
 				$projects.animate({
 					'height': '120px'
-				}, 600);
-			} else if ($navContainer.scrollLeft() === windowWidth) {
+				});
+				$navContainer.animate({
+					'scrollLeft': '0px'
+				});
+				currentPage('HOME');
+			} else if (scrollPos > windowWidth && scrollPos < windowWidth * 2 && currentPage() !== 'PROJECTS') {
 				closeResumeModal();
 				closeContactModal();
 				$projectClickHere.hide();
@@ -173,7 +180,11 @@ $(document).ready(function() {
 				});
 				$projects.css('height', 'auto');
 				$projectImg.fadeIn();
-			} else if ($navContainer.scrollLeft() === windowWidth * 2) {
+				$navContainer.animate({
+					'scrollLeft': windowWidth + 20
+				});
+				currentPage('PROJECTS');
+			} else if (scrollPos > windowWidth * 2 && scrollPos < windowWidth * 3 && currentPage() !== 'CONTACT') {
 				closeResumeModal();
 				lowerMainContent();
 				$contactModal.animate({
@@ -181,12 +192,20 @@ $(document).ready(function() {
 					'height': '80%',
 					'padding': '20px'
 				});
-			} else if ($navContainer.scrollLeft() === windowWidth * 3 - 300) {
+				$navContainer.animate({
+					'scrollLeft': windowWidth * 2 + 20
+				});
+				currentPage('CONTACT');
+			} else if (scrollPos >= windowWidth * 3 && currentPage() !== 'RESUME') {
 				closeContactModal();
 				lowerMainContent();
 				$resumeContainer.animate({
 					'left': '0px'
 				});
+				$navContainer.animate({
+					'scrollLeft': windowWidth * 3
+				});
+				currentPage('RESUME');
 			}
 		});
 	}

@@ -16,6 +16,8 @@ emailLogin = json.loads(open('emailLogin.json', 'r').read())
 EMAIL_ADDRESS = emailLogin['username']
 EMAIL_PASS = emailLogin['password']
 
+VERIF_EMAIL_MESSAGE = "Thanks for contacting me! I'll get back with you ASAP!\n \n Jake Gornall\n Full Stack Web Developer\n 740.438.7924\n jakegornall@yahoo.com"
+
 
 @app.route('/')
 def main():
@@ -58,6 +60,25 @@ def contact():
 		s.quit()
 	except:
 		return jsonify(status='false', message='Error sending message...')
+
+	try:
+		vMsg = MIMEText(VERIF_EMAIL_MESSAGE)
+		vMsg['Subject'] = "I got your message!"
+		vMsg['From'] = EMAIL_ADDRESS
+		vMsg['To'] = email
+	except:
+		return jsonify(status='false', message='Error preparing verification message...')
+
+	try:
+		# sends email via Jake's yahoo account.
+		s = smtplib.SMTP('smtp.mail.yahoo.com', 587)
+		s.starttls()
+		s.ehlo()
+		s.login(EMAIL_ADDRESS, EMAIL_PASS)
+		s.sendmail(vMsg['From'], email, vMsg.as_string())
+		s.quit()
+	except:
+		return jsonify(status='false', message='Error sending verification message...')
 
 	return jsonify(status='true', message='Thank You!')
 

@@ -35,7 +35,7 @@
 			<p>Full Stack Web Developer</p>
 			<p><a href="https://github.com/jakegornall">Github</a> - <a href="https://www.linkedin.com/in/jake-gornall-a4697283">LinkedIn</a> - <a href="https://profiles.udacity.com/u/jakegornall">Udacity</a></p>
 		</header>
-		<div class="container">
+		<section id="projects-section" class="container">
 			<div class="row text-center">
 				<div class="col-md-4 project">
 					<div id="lones" class="project-content">
@@ -80,14 +80,14 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</section>
 		<div>
 			<p>Photograph by <a href="https://unsplash.com/@leni_eleni">Elena Prokofyeva</a></p>
 		</div>
 
 		<!-- Contact Modal -->
 		<div id="contact-modal">
-			<h1>Contact Modal</h1>
+			<h1>Contact</h1>
 			<img id="loader" src="{{url_for('static', filename='images/ajax-loader.gif')}}" style="display: none">
 			<p id="contact-form-msg"></p>
 			<form id="contact-form" data-bind="submit: contactFormProcess">
