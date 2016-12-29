@@ -170,3 +170,29 @@ main header h1 {
     -moz-box-shadow: 1px 2px 14px -1px rgba(0,0,0,0.75);
     box-shadow: 1px 2px 14px -1px rgba(0,0,0,0.75);
 }
+
+@media only screen and (max-width: 991px) {
+	#nav-bar {
+		width: calc(100% * 4);
+		border-bottom: 3px solid #f47900;
+	}
+	nav div:hover {
+		border-bottom-color: #166188;
+		cursor: pointer;
+	}
+	.container {
+		overflow-x: scroll;
+	}
+	.col-md-3 {
+		display: inline-block;
+		width: calc(100% / 4 - 20px);
+		margin: 0px;
+		padding: 5px;
+	}
+	#nameBanner h1 {
+		font-size: 25px;
+	}
+	#nameBanner {
+		margin-top: 5px;
+	}
+}

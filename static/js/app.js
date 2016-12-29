@@ -32,7 +32,7 @@ function closeContactModal() {
 
 function lowerMainContent() {
 	$nameBanner.animate({
-		'margin-top': '101%'
+		'margin-top': '6000px'
 	});
 }
 
@@ -89,7 +89,7 @@ function ViewModel() {
 		closeResumeModal();
 		lowerMainContent();
 		$contactModal.animate({
-			'width': '20%',
+			'width': '25%',
 			'height': '80%',
 			'padding': '20px'
 		});
@@ -138,3 +138,56 @@ function ViewModel() {
 	}
 }
 ko.applyBindings(ViewModel);
+
+
+/*******************
+MOBILE FUNCTIONALITY
+********************/
+$(document).ready(function() {
+	var windowWidth = $(window).width();
+	var $navContainer = $('#nav-container');
+
+	if (windowWidth < 992) {
+		$navContainer.scroll(function() {
+			if ($navContainer.scrollLeft() === 0) {
+				closeResumeModal();
+				closeContactModal();
+				$projectClickHere.show();
+				$projectClickImage.hide();
+				$projectImg.fadeOut();
+				$nameBanner.animate({
+					'margin-top': '100px',
+					'padding': '50px'
+				});
+				$projects.animate({
+					'height': '120px'
+				}, 600);
+			} else if ($navContainer.scrollLeft() === windowWidth) {
+				closeResumeModal();
+				closeContactModal();
+				$projectClickHere.hide();
+				$projectClickImage.show();
+				$nameBanner.animate({
+					'margin-top': '0px',
+					'padding': '5px'
+				});
+				$projects.css('height', 'auto');
+				$projectImg.fadeIn();
+			} else if ($navContainer.scrollLeft() === windowWidth * 2) {
+				closeResumeModal();
+				lowerMainContent();
+				$contactModal.animate({
+					'width': '90%',
+					'height': '80%',
+					'padding': '20px'
+				});
+			} else if ($navContainer.scrollLeft() === windowWidth * 3 - 300) {
+				closeContactModal();
+				lowerMainContent();
+				$resumeContainer.animate({
+					'left': '0px'
+				});
+			}
+		});
+	}
+});

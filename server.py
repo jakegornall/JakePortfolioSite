@@ -10,6 +10,8 @@ import json
 app = Flask(__name__)
 jsglue = JSGlue(app)
 
+# emailLogin.json is ignored by git.
+# DO NOT ALLOW SENSITIVE INFO TO BE VISIBLE ON GITHUB!!!
 emailLogin = json.loads(open('emailLogin.json', 'r').read())
 EMAIL_ADDRESS = emailLogin['username']
 EMAIL_PASS = emailLogin['password']

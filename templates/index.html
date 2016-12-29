@@ -12,18 +12,18 @@
 	{{ JSGlue.include() }}
 </head>
 <body style="background-image: url({{url_for('static', filename='images/nduplkyrxqu-elena-prokofyeva.jpg')}});">
-	<header class="container">
-		<nav class="row text-center">
-			<div id="home" class="col-md-3" data-bind="click: homePage">
+	<header id="nav-container" class="container">
+		<nav id="nav-bar" class="row text-center">
+			<div id="home" class="col-md-3 nav-item" data-bind="click: homePage">
 				<h3>Home</h3>
 			</div>
-			<div id="projects" class="col-md-3" data-bind="click: projectsPage">
+			<div id="projects" class="col-md-3 nav-item" data-bind="click: projectsPage">
 				<h3>Projects</h3>
 			</div>
-			<div id="contact" class="col-md-3" data-bind="click: contactPage">
+			<div id="contact" class="col-md-3 nav-item" data-bind="click: contactPage">
 				<h3>Contact</h3>
 			</div>
-			<div id="resume" class="col-md-3" data-bind="click: resumePage">
+			<div id="resume" class="col-md-3 nav-item" data-bind="click: resumePage">
 				<h3>Resume</h3>
 			</div>
 		</nav>		
