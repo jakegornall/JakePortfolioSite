@@ -12,7 +12,8 @@ jsglue = JSGlue(app)
 
 # emailLogin.json is ignored by git.
 # DO NOT ALLOW SENSITIVE INFO TO BE VISIBLE ON GITHUB!!!
-emailLogin = json.loads(open('emailLogin.json', 'r').read())
+base_dir = os.path.dirname(__file__)
+emailLogin = json.loads(open(os.path.join(base_dir, 'emailLogin.json'), 'r').read())
 EMAIL_ADDRESS = emailLogin['username']
 EMAIL_PASS = emailLogin['password']
 
