@@ -53,7 +53,7 @@ def contact():
 
 	try:
 		# sends email via Jake's yahoo account.
-		s = smtplib.SMTP('smtp.mail.yahoo.com', 25)
+		s = smtplib.SMTP('smtp.mail.yahoo.com', 587)
 		s.starttls()
 		s.ehlo()
 		s.login(EMAIL_ADDRESS, EMAIL_PASS)
@@ -72,7 +72,7 @@ def contact():
 
 	try:
 		# sends email via Jake's yahoo account.
-		s = smtplib.SMTP('smtp.mail.yahoo.com', 25)
+		s = smtplib.SMTP('smtp.mail.yahoo.com', 587)
 		s.starttls()
 		s.ehlo()
 		s.login(EMAIL_ADDRESS, EMAIL_PASS)
