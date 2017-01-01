@@ -101,7 +101,7 @@ function ViewModel() {
 		closeResumeModal();
 		lowerMainContent();
 		$contactModal.animate({
-			'width': '25%',
+			'width': '80%',
 			'height': '80%',
 			'padding': '20px'
 		});
