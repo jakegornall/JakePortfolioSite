@@ -3,6 +3,7 @@ html, body, header {
 	padding: 0px;
 	font-family: 'Nunito', sans-serif;
 }
+
 body, html {
 	width: 100%;
 	height: 100%;
@@ -76,29 +77,34 @@ main header h1 {
     box-shadow: 1px 2px 14px -1px rgba(0,0,0,0.75);
     transition: margin-top .5s ease, box-shadow .5s ease;
 }
-.project-content:hover {
-	margin-top: -10px;
-	cursor: pointer;
-	-webkit-box-shadow: 1px 10px 15px 5px rgba(0,0,0,0.25);
-    -moz-box-shadow: 1px 10px 15px 5px rgba(0,0,0,0.25);
-    box-shadow: 1px 10px 15px 5px rgba(0,0,0,0.25);
+@media screen and (min-width: 992px) {
+	.project-content:hover {
+		margin-top: -10px;
+		cursor: pointer;
+		-webkit-box-shadow: 1px 10px 15px 5px rgba(0,0,0,0.25);
+	    -moz-box-shadow: 1px 10px 15px 5px rgba(0,0,0,0.25);
+	    box-shadow: 1px 10px 15px 5px rgba(0,0,0,0.25);
+	}
+	.project-content:hover .project-img {
+		opacity: .2;
+	}
+	.project-content:hover p {
+		opacity: 1;
+		margin-top: 5px;
+	}
+	.project-content:hover h6 {
+		opacity: 1;
+		top: 190px;
+	}
 }
-.project-content:hover .project-img {
-	opacity: .2;
-}
+
 .project-content p {
 	opacity: 0;
 	margin-top: 20px;
 	transition: opacity .5s ease, margin-top .5s ease;
 }
-.project-content:hover p {
-	opacity: 1;
-	margin-top: 5px;
-}
-.project-content:hover h6 {
-	opacity: 1;
-	top: 190px;
-}
+
+
 .project-header {
 	color: white;
 	padding: 5px;
@@ -171,38 +177,57 @@ main header h1 {
     box-shadow: 1px 2px 14px -1px rgba(0,0,0,0.75);
 }
 
+#menu-btn, #menu-close-btn {
+	display: none;
+}
+
 @media only screen and (max-width: 991px) {
-	#nav-bar {
-		width: calc(100% * 4);
+	body, html {
+		overflow-y: scroll;
+	}
+	#nav-container {
+		width: 70%;
+		position: fixed;
+		z-index: 9999;
+		background-color: black;
+		top: 0px;
+		left: -100%;
+		transition: left .5s ease;
+		height: 100%;
 		margin: 0px;
 		padding: 0px;
 		border-bottom: 3px solid #f47900;
 	}
-	nav div:hover {
-		border-bottom-color: #166188;
+	#nav-bar {
+		width: 100%;
+		margin: 0px;
+	}
+
+	#menu-btn {
+		display: block;
+		position: fixed;
+		z-index: 9998;
+		top: 20px;
+		left: 20px;
+		color: white;
+		background-color: black;
+		opacity: .7;
+		padding: 15px;
+	}
+
+	#menu-close-btn {
+		display: block;
+	}
+	#menu-btn:hover {
 		cursor: pointer;
 	}
-	.container {
-		overflow-x: scroll;
-		margin: 0px;
-		padding: 0px;
-	}
-	.col-md-3 {
-		display: inline-block;
-		width: calc(100% / 4 - 10px);
-		margin: 0px;
-		padding: 0px;
-		padding-top: 5px;
-		padding-bottom: 5px;
-	}
+
 	#nameBanner h1 {
 		font-size: 25px;
 	}
+
 	#nameBanner {
 		margin-top: 5px;
 	}
-	#projects-section {
-		overflow-y: scroll;
-		max-height: 500px;
-	}
+
 }

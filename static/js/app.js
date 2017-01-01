@@ -18,11 +18,13 @@ var $projectClickImage = $('.project-content h6');
 var $contactForm = $('#contact-form');
 var $contactFormLoader = $('#loader');
 var $contactFormMessage = $('#contact-form-msg');
+var $navBar = $('#nav-container');
 
 /***************
 GLOBAL VARIABLES
 ****************/
 var currentPage = ko.observable('HOME');
+var menuIsOpen = false;
 
 /***************
 GLOBAL FUNCTIONS
@@ -53,6 +55,14 @@ KNOCKOUT.JS VIEWMODEL
 *********************/
 function ViewModel() {
 	var self = this;
+
+	self.menuBtn = function() {
+		$navBar.css('left', '0px');
+	}
+
+	self.closeMenu = function() {
+		$navBar.css('left', '-100%');
+	}
 
 	// Animates the site to the home page.
 	self.homePage = function() {
