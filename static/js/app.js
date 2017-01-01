@@ -78,6 +78,7 @@ function ViewModel() {
 		$projects.animate({
 			'height': '120px'
 		}, 600);
+		self.closeMenu();
 		currentPage('home');
 	}
 
@@ -93,6 +94,7 @@ function ViewModel() {
 		});
 		$projects.css('height', 'auto');
 		$projectImg.fadeIn();
+		self.closeMenu();
 		currentPage('projects');
 	}
 
@@ -105,6 +107,7 @@ function ViewModel() {
 			'height': '80%',
 			'padding': '20px'
 		});
+		self.closeMenu();
 		currentPage('contact');
 	}
 
@@ -115,6 +118,7 @@ function ViewModel() {
 		$resumeContainer.animate({
 			'left': '0px'
 		});
+		self.closeMenu();
 		currentPage('resume');
 	}
 
