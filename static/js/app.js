@@ -126,31 +126,41 @@ function ViewModel() {
 	self.contactFormProcess = function() {
 		$contactForm.hide();
 		$contactFormLoader.show();
+		$contactFormMessage.text('');
 		var full_name = $('#full_name').val();
 		var email = $('#email').val();
 		var message = $('#message').val();
 
-		var data = {
-			'full_name': full_name,
-			'email': email,
-			'message': message
-		};
+		if (!full_name || !email || !message) {
+			$contactForm.show();
+			$contactFormLoader.hide();
+			$contactFormMessage.text('All fields required.');
+		} else {
+			var data = {
+				'full_name': full_name,
+				'email': email,
+				'message': message
+			};
 
-		$.ajax({
-			url: Flask.url_for('contact'),
-			type: 'POST',
-			dataType: 'json',
-			contentType: 'application/json',
-			data: JSON.stringify(data),
-			success: function(response) {
-				$contactFormLoader.hide();
-				$contactFormMessage.text(response.message);
-			},
-			error: function() {
-				$contactFormLoader.hide();
-				$contactFormMessage.text('An error occurred. Please try again later.')
-			}
-		});
+			$.ajax({
+				url: Flask.url_for('contact'),
+				type: 'POST',
+				dataType: 'json',
+				contentType: 'application/json',
+				data: JSON.stringify(data),
+				success: function(response) {
+					$contactFormLoader.hide();
+					if (response.success === 'false') {
+						$contactForm.show();
+					}
+					$contactFormMessage.text(response.message);
+				},
+				error: function() {
+					$contactFormLoader.hide();
+					$contactFormMessage.text('An error occurred. Please try again later.')
+				}
+			});	
+		}
 	}
 }
 ko.applyBindings(ViewModel);
