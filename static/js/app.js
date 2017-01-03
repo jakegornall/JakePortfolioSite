@@ -124,24 +124,28 @@ function ViewModel() {
 
 	// Processes and sends contact form data to server.
 	self.contactFormProcess = function() {
+		// displays the loading bar only.
 		$contactForm.hide();
 		$contactFormLoader.show();
 		$contactFormMessage.text('');
+
+		// retrieves contact form data.
 		var full_name = $('#full_name').val();
 		var email = $('#email').val();
 		var message = $('#message').val();
 
-		if (!full_name || !email || !message) {
-			$contactForm.show();
-			$contactFormLoader.hide();
-			$contactFormMessage.text('All fields required.');
-		} else {
+		// verifies that all fields are filled out.
+		// displays error message if not.
+		if (full_name && email && message) {
+			// pack data into sendable object.
 			var data = {
 				'full_name': full_name,
 				'email': email,
 				'message': message
 			};
 
+			// attempt to send data to server.
+			// If failed, display error message.
 			$.ajax({
 				url: Flask.url_for('contact'),
 				type: 'POST',
@@ -159,7 +163,11 @@ function ViewModel() {
 					$contactFormLoader.hide();
 					$contactFormMessage.text('An error occurred. Please try again later.')
 				}
-			});	
+			});
+		} else {
+			$contactForm.show();
+			$contactFormLoader.hide();
+			$contactFormMessage.text('All fields required.');
 		}
 	}
 }
