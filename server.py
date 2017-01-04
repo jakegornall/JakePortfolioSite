@@ -5,6 +5,9 @@ from flask_jsglue import JSGlue
 import smtplib
 from email.mime.text import MIMEText
 import json
+import httplib2
+import urllib
+import requests
 
 
 app = Flask(__name__)
@@ -83,6 +86,61 @@ def contact():
 
 	return jsonify(status='true', message='Thank You!')
 
+
+##############################
+## Neighborhood Map Project ##
+##############################
+def getYelpAccessToken():
+    '''Retrieves access token from Yelp and returns the response'''
+    yelpSecrets = json.loads(open(os.path.join(base_dir, 'yelpSecrets.json'), 'r').read())['yelp']
+    url = 'https://api.yelp.com/oauth2/token'
+    body = urllib.urlencode(yelpSecrets)
+
+    h = httplib2.Http()
+    response = h.request(url, method='POST', body=body)[1]
+    return json.loads(response)
+
+
+@app.route('/MapProject', methods=["GET"])
+def MapProject():
+    return render_template('MapProject.html')
+
+
+@app.route('/MapProject/yelpCallAPI', methods=['GET'])
+def yelpCallAPI():
+    try:
+    	YelpResponseObject = getYelpAccessToken()
+    except:
+        return jsonify(status='false', message='Unable to get access token...')
+
+    try:
+        name = request.args.get('name')
+        address = request.args.get('address')
+        latitude = request.args.get('latitude')
+        longitude = request.args.get('longitude')
+    except:
+        return jsonify(
+            status='false',
+            message='Error unpacking client data...')
+
+    url = 'https://api.yelp.com/v3/businesses/search?term={name}&location={address}&latitude={latitude}&longitude={longitude}&limit=1'  # noqa
+    url = url.format(
+        name=name,
+        address=address,
+        latitude=latitude,
+        longitude=longitude)
+
+    try:
+        response = requests.get(
+            url,
+            headers={'Authorization': 'bearer %s' % YelpResponseObject['access_token']}  # noqa
+            )
+    except:
+        return jsonify(
+            status='false',
+            message='Error requesting data from Yelp...')
+
+    return jsonify(status='true', content=json.loads(response.text))
 
 
 if __name__ == '__main__':

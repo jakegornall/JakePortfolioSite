@@ -1,0 +1,309 @@
+html, body {
+	width: 100%;
+	height: 100%;
+	margin: 0px;
+	padding: 0px;
+	font-family: 'Raleway', sans-serif;
+}
+
+.h1 {
+	font-family: 'Raleway', sans-serif;
+	font-size: 20px;
+}
+
+.h2 {
+	font-family: 'Raleway', sans-serif;
+	font-size: 15px;
+}
+
+#map {
+	width: 100%;
+	height: 100%;
+	margin: 0px;
+	padding: 0px;
+	z-index: 1;
+}
+
+#new-place-input {
+	position: fixed;
+	width: 100%;
+	text-align: center;
+	top: 5%;
+	z-index: 9997;
+}
+#new-place-textbox {
+	width: 70%;
+	margin: 0px;
+	padding-left: 10px;
+	height: 30px;
+	border-radius: 10px 0px 0px 10px;
+	border: none;
+	-webkit-box-shadow: 0px 0px 25px -6px rgba(0,0,0,0.81);
+    -moz-box-shadow: 0px 0px 25px -6px rgba(0,0,0,0.81);
+    box-shadow: 0px 0px 25px -6px rgba(0,0,0,0.81);
+}
+
+#new-place-btn {
+	margin: 0px;
+	margin-left: -4px;
+	margin-top: 1px;
+	height: 32px;
+	-moz-box-shadow:inset 0px 1px 0px 0px #caefab;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #caefab;
+	box-shadow:inset 0px 1px 0px 0px #caefab;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #77d42a), color-stop(1, #5cb811));
+	background:-moz-linear-gradient(top, #77d42a 5%, #5cb811 100%);
+	background:-webkit-linear-gradient(top, #77d42a 5%, #5cb811 100%);
+	background:-o-linear-gradient(top, #77d42a 5%, #5cb811 100%);
+	background:-ms-linear-gradient(top, #77d42a 5%, #5cb811 100%);
+	background:linear-gradient(to bottom, #77d42a 5%, #5cb811 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#77d42a', endColorstr='#5cb811',GradientType=0);
+	background-color:#77d42a;
+	-moz-border-radius:0px 10px 10px 0px;
+	-webkit-border-radius:0px 10px 10px 0px;
+	border-radius:0px 10px 10px 0px;
+	border:1px solid #268a16;
+	display:inline-block;
+	cursor:pointer;
+	color:#306108;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 15px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #aade7c;
+	-webkit-box-shadow: 0px 0px 25px -6px rgba(0,0,0,0.81);
+    -moz-box-shadow: 0px 0px 25px -6px rgba(0,0,0,0.81);
+    box-shadow: 0px 0px 25px -6px rgba(0,0,0,0.81);
+}
+#new-place-btn:hover {
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #5cb811), color-stop(1, #77d42a));
+	background:-moz-linear-gradient(top, #5cb811 5%, #77d42a 100%);
+	background:-webkit-linear-gradient(top, #5cb811 5%, #77d42a 100%);
+	background:-o-linear-gradient(top, #5cb811 5%, #77d42a 100%);
+	background:-ms-linear-gradient(top, #5cb811 5%, #77d42a 100%);
+	background:linear-gradient(to bottom, #5cb811 5%, #77d42a 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#5cb811', endColorstr='#77d42a',GradientType=0);
+	background-color:#5cb811;
+}
+#new-place-btn:active {
+	position:relative;
+	top:1px;
+}
+
+#current-place {
+	position: fixed;
+	z-index: 9996;
+	left: 0px;
+	right: 0px;
+	width: 70%;
+	background-color: white;
+	font-family: 'Raleway', sans-serif;
+	border-radius: 8px;
+	margin: auto;
+	padding: 5px;
+	text-align: center;
+	top: calc(5% + 25px);
+	-webkit-box-shadow: 0px 0px 25px -6px rgba(0,0,0,0.81);
+    -moz-box-shadow: 0px 0px 25px -6px rgba(0,0,0,0.81);
+    box-shadow: 0px 0px 25px -6px rgba(0,0,0,0.81);
+}
+
+#current-place h1 {
+	font-size: 15px;
+}
+
+#current-place button {
+	width: 100%;
+}
+
+#main-ui-window-bottom {
+	position: fixed;
+	font-family: 'Raleway', sans-serif;
+	z-index: 9997;
+	top: calc(100% - 50px);
+	left: 0px;
+	width: 100%;
+	height: 75%;
+	border-radius: 8px;
+	text-align: center;
+	background-color: white;
+	-webkit-box-shadow: 0px 0px 25px -6px rgba(0,0,0,0.81);
+    -moz-box-shadow: 0px 0px 25px -6px rgba(0,0,0,0.81);
+    box-shadow: 0px 0px 25px -6px rgba(0,0,0,0.81);
+}
+
+#places-search-box {
+	width: 90%;
+	margin-top: 5px;
+	padding: 3px;
+	border: none;
+	border-radius: 3px;
+	font-family: 'Raleway', sans-serif;
+	background-color: #c4c4c4;
+	color: #7c7c7c;
+}
+
+#new-place-search-results {
+	position: fixed;
+	font-family: 'Raleway', sans-serif;
+	display: none;
+	top: calc(5% + 40px);
+	left: 0px;
+	right: 0px;
+	width: 90%;
+	margin: auto;
+	max-height: 80%;
+	padding: 5px;
+	background-color: white;
+	border-radius: 5px;
+	z-index: 9998;
+	-webkit-box-shadow: 0px 0px 25px -6px rgba(0,0,0,0.81);
+    -moz-box-shadow: 0px 0px 25px -6px rgba(0,0,0,0.81);
+    box-shadow: 0px 0px 25px -6px rgba(0,0,0,0.81);
+}
+
+#new-place-search-results-container {
+	max-height: 200px;
+	overflow-y: scroll;
+}
+
+#new-place-search-list {
+	margin: auto;
+	padding: 5px;
+}
+
+#new-place-search-list li {
+	list-style: none;
+	margin: auto;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	padding: 5px;
+	width: 90%;
+	background-color: white;
+	border-bottom: 1px solid lightgrey;
+}
+
+#new-place-search-list li:hover {
+	cursor: pointer;
+	background-color: aqua;
+}
+
+#new-place-search-list h3 {
+	font-family: 'Raleway', sans-serif;
+	font-size: 12px;
+	margin-bottom: 0px;
+	margin-top: 0px;
+}
+
+#new-place-search-list img {
+	float: left;
+	margin: auto;
+	width: 40px;
+	margin-right: 5px;
+}
+
+#places-list {
+	margin: 0px;
+	padding: 5px;
+	width: 100%;
+	max-height: 75%;
+	overflow-y: scroll;
+}
+
+#places-list li {
+	list-style: none;
+	margin: auto;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	padding: 5px;
+	width: 90%;
+	background-color: white;
+	border-bottom: 1px solid lightgrey;
+
+}
+
+#places-list li:hover {
+	background-color: aqua;
+	cursor: pointer;
+}
+
+#place-list li h1 {
+	font-family: 'Raleway', sans-serif;
+	font-size: 8px;
+}
+
+#place-list li p {
+	font-family: 'Raleway', sans-serif;
+	font-size: 8px;
+}
+
+.main-window-controller {
+	width: 100%;
+	margin: 0px;
+	padding: 0px;
+}
+.main-window-controller:hover {
+	cursor: pointer;
+}
+
+.grab-bar {
+	padding: 5px;
+	width: 80%;
+	margin: auto;
+	margin-top: 5px;
+	border-radius: 50px;
+	background-color: #c4c4c4;
+}
+
+hr {
+	border-color: #e0e0e0;
+}
+
+#MoreInfoModal {
+	z-index: 9999;
+	font-family: 'Raleway', sans-serif;
+}
+
+#more-info-loader {
+	display: block;
+	margin: auto;
+}
+
+@media screen and (min-width: 1000px) {
+	#main-ui-window-bottom {
+		left: 0px;
+		top: 0px;
+		width: 25%;
+		height: 100%;
+		border-radius: 0px;
+		opacity: 100;
+	}
+	.main-window-controller, .grab-bar {
+		display: none;
+	}
+	#new-place-input {
+		left: 25%;
+		right: 0px;
+		width: auto;
+		margin: auto;
+	}
+	#new-place-textbox {
+		width: 45%;
+	}
+	#current-place {
+		left: 25%;
+		right: 0px;
+		width: 30%;
+		margin: auto;
+	}
+	#new-place-search-results {
+		left: 25%;
+		right: 0px;
+		width: 45%;
+		margin: auto;
+	}
+	#places-list {
+		max-height: 85%;
+	}
+}

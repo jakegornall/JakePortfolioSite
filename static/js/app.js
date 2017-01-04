@@ -122,6 +122,18 @@ function ViewModel() {
 		currentPage('resume');
 	}
 
+	self.goToLones = function() {
+		window.location = "https://jacoblonesofficialsite.appspot.com";
+	}
+
+	self.goToMap = function() {
+		window.location = Flask.url_for('MapProject');
+	}
+
+	self.goToBlog = function() {
+		window.location = "http://www.blogproject-144722.appspot.com";
+	}
+
 	// Processes and sends contact form data to server.
 	self.contactFormProcess = function() {
 		// displays the loading bar only.
