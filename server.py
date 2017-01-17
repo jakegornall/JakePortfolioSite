@@ -28,6 +28,11 @@ def main():
 	'''Renders main site'''
 	return render_template('index.html')
 
+
+@app.route('/home')
+def home():
+	return render_template('home.html')
+
 @app.route('/contact', methods=['POST'])
 def contact():
 	'''Recieves contact form data and emails it to Jake's yahoo account.'''

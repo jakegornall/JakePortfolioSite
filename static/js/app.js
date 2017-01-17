@@ -8,17 +8,11 @@ var $contactButton = $('#contact');
 var $resumeButton = $('#resume');
 
 // jQuery selecters.
-var $nameBanner = $('#nameBanner');
-var $projects = $('.project-content');
+
 var $contactModal = $('#contact-modal');
-var $resumeContainer = $('#resume-container');
-var $projectImg = $('.project-img');
-var $projectClickHere = $('.project-content p');
-var $projectClickImage = $('.project-content h6');
 var $contactForm = $('#contact-form');
 var $contactFormLoader = $('#loader');
 var $contactFormMessage = $('#contact-form-msg');
-var $navBar = $('#nav-container');
 
 /***************
 GLOBAL VARIABLES
@@ -29,25 +23,7 @@ var menuIsOpen = false;
 /***************
 GLOBAL FUNCTIONS
 ****************/
-function closeContactModal() {
-	$contactModal.animate({
-		'width': '0px',
-		'height': '0px',
-		'padding': '0px'
-	});	
-}
 
-function lowerMainContent() {
-	$nameBanner.animate({
-		'margin-top': '6000px'
-	});
-}
-
-function closeResumeModal() {
-	$resumeContainer.animate({
-		'left': '101%'
-	});
-}
 
 
 /********************
@@ -56,74 +32,24 @@ KNOCKOUT.JS VIEWMODEL
 function ViewModel() {
 	var self = this;
 
-	self.menuBtn = function() {
-		$navBar.css('left', '0px');
-	}
-
-	self.closeMenu = function() {
-		$navBar.css('left', '-100%');
-	}
-
-	// Animates the site to the home page.
-	self.homePage = function() {
-		closeResumeModal();
-		closeContactModal();
-		$projectClickHere.show();
-		$projectClickImage.hide();
-		$projectImg.fadeOut();
-		$nameBanner.animate({
-			'margin-top': '100px',
-			'padding': '50px'
+	self.Home = function() {
+		$('#main-loader').show();
+		$.ajax({
+			url: Flask.url_for('home'),
+			success: function(response) {
+				$('#main-loader').hide();
+				$('#main-content').html(response);
+			},
+			error: function() {
+				$('#main-loader').hide();
+				$('main').html("We're sorry. Our server is currently not responding. Trying again...");
+				setTimeout(self.Home(), 3000);
+			}
 		});
-		$projects.animate({
-			'height': '120px'
-		}, 600);
-		self.closeMenu();
-		currentPage('home');
-	}
-
-	// Animates the site to the projects page.
-	self.projectsPage = function() {
-		closeResumeModal();
-		closeContactModal();
-		$projectClickHere.hide();
-		$projectClickImage.show();
-		$nameBanner.animate({
-			'margin-top': '0px',
-			'padding': '5px'
-		});
-		$projects.css('height', 'auto');
-		$projectImg.fadeIn();
-		self.closeMenu();
-		currentPage('projects');
-	}
-
-	// Animates the site to the contact page.
-	self.contactPage = function() {
-		closeResumeModal();
-		lowerMainContent();
-		$contactModal.animate({
-			'width': '80%',
-			'height': '80%',
-			'padding': '20px'
-		});
-		self.closeMenu();
-		currentPage('contact');
-	}
-
-	// Animates the site to the resume page.
-	self.resumePage = function() {
-		closeContactModal();
-		lowerMainContent();
-		$resumeContainer.animate({
-			'left': '0px'
-		});
-		self.closeMenu();
-		currentPage('resume');
 	}
 
 	self.goToLones = function() {
-		window.location = "https://jacoblonesofficialsite.appspot.com";
+		window.location = "https://jacoblonesofficialsite.appspot.com/";
 	}
 
 	self.goToMap = function() {
@@ -131,7 +57,21 @@ function ViewModel() {
 	}
 
 	self.goToBlog = function() {
-		window.location = "http://www.blogproject-144722.appspot.com";
+		window.location = "http://www.blogproject-144722.appspot.com/";
+	}
+
+	self.openContactModal = function() {
+		$('#dimmer').fadeIn();
+		$contactModal.animate({
+			"top": "20%"
+		});
+	}
+
+	self.closeContactModal = function() {
+		$('#dimmer').fadeOut();
+		$contactModal.animate({
+			"top": "-100%"
+		});
 	}
 
 	// Processes and sends contact form data to server.
@@ -184,3 +124,18 @@ function ViewModel() {
 	}
 }
 ko.applyBindings(ViewModel);
+
+$(document).ready(function() {
+	$.ajax({
+		url: Flask.url_for('home'),
+		success: function(response) {
+			$('#main-loader').hide();
+			$('main').html(response);
+		},
+		error: function() {
+			$('#main-loader').hide();
+			$('main').html("We're sorry. Our server is currently not responding. Trying again...");
+			setTimeout(ViewModel().Home(), 3000);
+		}
+	});
+});
