@@ -133,6 +133,7 @@ main {
 #technologies {
 	transition: background-color .5s;
 	background-color: white;
+	margin-bottom: 12%;
 }
 #technologies .tech-item {
 	padding: 15px;
@@ -184,9 +185,6 @@ main {
 	#mobile-menu {
 		display: inline;
 	}
-	#technologies {
-		margin-bottom: 12%;
-	}
 	#projects-dropdown-mobile {
 		display: block;
 		position: fixed;
@@ -194,6 +192,7 @@ main {
 		left: 0px;
 		bottom: -200px;
 		width: 100%;
+		border: 1px solid #DBE2E8;
 	}
 
 	#projects-dropdown-mobile ul {

@@ -19,7 +19,7 @@
 			</div>
 			<div id="projects" class="col-md-3 nav-item">
 				<h3>Projects</h3>
-				<div id="projects-dropdown">
+				<div id="projects-dropdown" class="text-center">
 					<ul>
 						<li data-bind="click: goToLones">Jacob Lones Website</li>
 						<li data-bind="click: goToMap">Neighborhood Map</li>
@@ -53,15 +53,14 @@
 			<img src="{{url_for('static', filename='images/Services-50.png')}}" height="30px">
 			<p>TECH</p>
 		</div>
-		<div id="projects-dropdown-mobile">
-			<ul>
-				<li data-bind="click: goToLones">Jacob Lones Website</li>
-				<li data-bind="click: goToMap">Neighborhood Map</li>
-				<li data-bind="click: goToBlog">Blog Site</li>
-			</ul>
-		</div>
 	</div>
-
+	<div id="projects-dropdown-mobile" class="text-center" style="display: none">
+		<ul>
+			<li data-bind="click: goToLones">JACOB LONES WEBSITE</li>
+			<li data-bind="click: goToMap">NEIGHBORHOOD MAP</li>
+			<li data-bind="click: goToBlog">BLOG SITE</li>
+		</ul>
+	</div>
 
 	<main id="main-content">
 		<section id="home-section" class="parallax" style='background-image: url("{{url_for("static", filename="images/b18trxc8upq-artem-sapegin.jpg")}}"); background-size: cover; background-position: center'>

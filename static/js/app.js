@@ -59,7 +59,7 @@ function ViewModel() {
 	self.projectsMenu = function() {
 		if (self.projectsMenuIsClosed()) {
 			$('#projects-dropdown-mobile').animate({
-				"bottom": "7%"
+				"bottom": $('#mobile-menu').height()
 			});
 			self.projectsMenuIsClosed(false);
 		} else {
@@ -157,8 +157,8 @@ var stopPoint = 2000;
 $(document).scroll(function() {
 	var scrollPos = $(window).scrollTop();
 	if ($homeSection.height() > 220 || scrollPos < stopPoint) {
-		$nameBanner.css("margin-top", headerMarginTop - scrollPos + "px");
-		$nameBanner.css("margin-bottom", headerMarginBtm - scrollPos + "px");	
+		$nameBanner.css("margin-top", headerMarginTop - scrollPos/2 + "px");
+		$nameBanner.css("margin-bottom", headerMarginBtm - scrollPos/2 + "px");	
 	} else {
 		stopPoint = scrollPos;
 	}
