@@ -8,17 +8,19 @@ var $contactButton = $('#contact');
 var $resumeButton = $('#resume');
 
 // jQuery selecters.
-
+var $parallax = $('.parallax');
 var $contactModal = $('#contact-modal');
 var $contactForm = $('#contact-form');
 var $contactFormLoader = $('#loader');
 var $contactFormMessage = $('#contact-form-msg');
+var $nameBanner = $('#nameBanner');
+var $homeSection = $('#home-section');
+var $navContainer = $('#nav-container');
+var $techSection = $('#technologies');
 
 /***************
 GLOBAL VARIABLES
 ****************/
-var currentPage = ko.observable('HOME');
-var menuIsOpen = false;
 
 /***************
 GLOBAL FUNCTIONS
@@ -32,20 +34,41 @@ KNOCKOUT.JS VIEWMODEL
 function ViewModel() {
 	var self = this;
 
+	self.projectsMenuIsClosed = ko.observable(true);
+
 	self.Home = function() {
-		$('#main-loader').show();
-		$.ajax({
-			url: Flask.url_for('home'),
-			success: function(response) {
-				$('#main-loader').hide();
-				$('#main-content').html(response);
-			},
-			error: function() {
-				$('#main-loader').hide();
-				$('main').html("We're sorry. Our server is currently not responding. Trying again...");
-				setTimeout(self.Home(), 3000);
-			}
+		$('html, body').animate({
+			"scrollTop": "0px"
 		});
+	}
+
+	self.Tech = function() {
+		if ($(window).width() < 992) {
+			$('html, body').animate({
+				"scrollTop": "85%"
+			});
+		} else {
+			$techSection.css("background-color", "#039dc7");
+			setTimeout(function() {
+				$techSection.css("background-color", "white");
+			}, 500);
+		}
+		
+	}
+
+	self.projectsMenu = function() {
+		if (self.projectsMenuIsClosed()) {
+			$('#projects-dropdown-mobile').animate({
+				"bottom": "7%"
+			});
+			self.projectsMenuIsClosed(false);
+		} else {
+			$('#projects-dropdown-mobile').animate({
+				"bottom": "-200px"
+			});
+			self.projectsMenuIsClosed(true);
+		}
+		
 	}
 
 	self.goToLones = function() {
@@ -125,17 +148,18 @@ function ViewModel() {
 }
 ko.applyBindings(ViewModel);
 
-$(document).ready(function() {
-	$.ajax({
-		url: Flask.url_for('home'),
-		success: function(response) {
-			$('#main-loader').hide();
-			$('main').html(response);
-		},
-		error: function() {
-			$('#main-loader').hide();
-			$('main').html("We're sorry. Our server is currently not responding. Trying again...");
-			setTimeout(ViewModel().Home(), 3000);
-		}
-	});
+var headerMarginTop = parseFloat($nameBanner.css('margin-top'));
+var headerMarginBtm = parseFloat($nameBanner.css('margin-bottom'));
+var stopPoint = 2000;
+
+
+// controls parallax. 
+$(document).scroll(function() {
+	var scrollPos = $(window).scrollTop();
+	if ($homeSection.height() > 220 || scrollPos < stopPoint) {
+		$nameBanner.css("margin-top", headerMarginTop - scrollPos + "px");
+		$nameBanner.css("margin-bottom", headerMarginBtm - scrollPos + "px");	
+	} else {
+		stopPoint = scrollPos;
+	}
 });

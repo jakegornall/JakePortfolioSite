@@ -12,19 +12,21 @@ body, html {
 
 main {
 	width: 100%;
-}
-
-#main-loader {
-	display: block;
-	margin: auto;
-	margin-top: 10%;
+	height: 100%;
 }
 
 .container, .row {
 	width: 100%;
+	margin: 0px;
+	padding: 0px;
 }
 
 #nav-container {
+	position: fixed;
+	z-index: 9998;
+	top: 0px;
+	left: 0px;
+	width: 100%;
 	background-color: white;
 	border: 1px solid #DBE2E8;
 	box-shadow: 0 0 15px 0 rgba(46, 61, 73, 0.15);
@@ -46,10 +48,15 @@ main {
 #projects-dropdown {
 	opacity: 0;
 	position: absolute;
-	top: 101%;
+	z-index: 9997;
+	top: -150%;
 	left: 0px;
-	transition: opacity .5s;
+	transition: opacity .5s, top .5s;
 	width: 100%;
+}
+#projects-dropdown ul {
+	padding: 0px;
+	margin: 0px;
 }
 #projects-dropdown li {
 	border-bottom: 1px solid #DBE2E8;
@@ -57,6 +64,7 @@ main {
 	transition: border-bottom .5s;
 	width: 100%;
 	margin: auto;
+	padding: 10px;
 	background-color: white;
 }
 #projects-dropdown li:hover {
@@ -66,17 +74,18 @@ main {
 
 #projects:hover #projects-dropdown {
 	opacity: 1;
+	top: 101%;
 }
 
 #nameBanner {
 	text-align: center;
 	margin-top: 10%;
-	padding: 20px;
-	padding-top: 5px;
-	padding-bottom: 5px;
-	background-color: white;
-	border: 1px solid #DBE2E8;
-	box-shadow: 0 0 15px 0 rgba(46, 61, 73, 0.15);
+	margin-bottom: 10%;
+	width: 100%;
+	color: white;
+	padding: 15px;
+	background-color: black;
+	opacity: .5;
 }
 
 #contact-modal {
@@ -113,4 +122,97 @@ main {
 
 #contact-modal h1 {
 	margin: 0px;
+}
+
+#home-section {
+	overflow: hidden;
+	border-bottom: 1px solid #DBE2E8;
+	box-shadow: 0 0 15px 0 rgba(46, 61, 73, 0.15);
+}
+
+#technologies {
+	transition: background-color .5s;
+	background-color: white;
+}
+#technologies .tech-item {
+	padding: 15px;
+}
+
+#technologies .tech-item-content {
+	box-shadow: 0 0 15px 0 rgba(46, 61, 73, 0.15);
+    background: white;
+    margin: 0 auto;
+    padding: 5px;
+    border: 1px solid #DBE2E8;
+}
+
+#mobile-menu {
+	display: none;
+	position: fixed;
+	z-index: 9998;
+	left: 0px;
+	bottom: 0px;
+	width: 100%;
+	background-color: white;
+	border-top: 1px solid #DBE2E8;
+	box-shadow: 0 0 15px 0 rgba(46, 61, 73, 0.15);
+}
+.mobile-menu-item {
+	display: inline-block;
+	width: calc(100% / 4 - 5px);
+	text-align: center;
+	margin: 0px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+	transition: background-color .5s;
+}
+.mobile-menu-item:hover {
+	background-color: #039dc7;
+}
+.mobile-menu-item p {
+	font-size: .6em;
+	margin: 0px;
+	padding: 0px;
+}
+
+@media screen and (max-width: 992px) {
+	#nav-container {
+		display: none;
+	}
+	#mobile-menu {
+		display: inline;
+	}
+	#technologies {
+		margin-bottom: 12%;
+	}
+	#projects-dropdown-mobile {
+		display: block;
+		position: fixed;
+		z-index: 9997;
+		left: 0px;
+		bottom: -200px;
+		width: 100%;
+	}
+
+	#projects-dropdown-mobile ul {
+		z-index: 9997;
+		padding: 0px;
+		margin: 0px;
+	}
+	#projects-dropdown-mobile li {
+		z-index: 9997;
+		border-bottom: 1px solid #DBE2E8;
+		list-style: none;
+		transition: border-bottom .5s;
+		width: 100%;
+		margin: auto;
+		padding: 10px;
+		background-color: white;
+	}
+	#projects-dropdown-mobile li:hover {
+		cursor: pointer;
+		border-bottom-color: orange;
+	}
 }
