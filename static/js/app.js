@@ -157,11 +157,14 @@ var stopPoint = 2000;
 
 $(document).scroll(function() {
 	var scrollPos = $window.scrollTop();
-	var newMargin = headerMarginTop - scrollPos/2 + "px";
-	if ($homeSection.height() > 220 || scrollPos < stopPoint) {
-		$nameBanner.css("margin-top", newMargin);
-		$nameBanner.css("margin-bottom", newMargin);	
-	} else {
-		stopPoint = scrollPos;
+	if (scrollPos % 2 == 0) {
+		var newMargin = headerMarginTop - scrollPos/2 + "px";
+		if ($homeSection.height() > 220 || scrollPos < stopPoint) {
+			$nameBanner.css("margin-top", newMargin);
+			$nameBanner.css("margin-bottom", newMargin);
+		} else {
+			stopPoint = scrollPos;
+		}	
 	}
+	return false;
 });
