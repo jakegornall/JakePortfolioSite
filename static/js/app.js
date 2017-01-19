@@ -17,6 +17,7 @@ var $nameBanner = $('#nameBanner');
 var $homeSection = $('#home-section');
 var $navContainer = $('#nav-container');
 var $techSection = $('#technologies');
+var $window = $(window);
 
 /***************
 GLOBAL VARIABLES
@@ -148,17 +149,18 @@ function ViewModel() {
 }
 ko.applyBindings(ViewModel);
 
+
+// controls parallax on name banner. 
 var headerMarginTop = parseFloat($nameBanner.css('margin-top'));
 var headerMarginBtm = parseFloat($nameBanner.css('margin-bottom'));
 var stopPoint = 2000;
 
-
-// controls parallax. 
 $(document).scroll(function() {
-	var scrollPos = $(window).scrollTop();
+	var scrollPos = $window.scrollTop();
+	var newMargin = headerMarginTop - scrollPos/2 + "px";
 	if ($homeSection.height() > 220 || scrollPos < stopPoint) {
-		$nameBanner.css("margin-top", headerMarginTop - scrollPos/2 + "px");
-		$nameBanner.css("margin-bottom", headerMarginBtm - scrollPos/2 + "px");	
+		$nameBanner.css("margin-top", newMargin);
+		$nameBanner.css("margin-bottom", newMargin);	
 	} else {
 		stopPoint = scrollPos;
 	}
