@@ -44,7 +44,7 @@ function ViewModel() {
 	}
 
 	self.Tech = function() {
-		if ($(window).width() < 992) {
+		if ($window.width() < 992) {
 			$('html, body').animate({
 				"scrollTop": "85%"
 			});
@@ -150,14 +150,16 @@ function ViewModel() {
 ko.applyBindings(ViewModel);
 
 
-// controls parallax on name banner. 
+// controls parallax on name banner.
 var headerMarginTop = parseFloat($nameBanner.css('margin-top'));
 var headerMarginBtm = parseFloat($nameBanner.css('margin-bottom'));
+
 var stopPoint = 2000;
 
 $(document).scroll(function() {
-	var scrollPos = $window.scrollTop();
-	if (scrollPos % 2 == 0) {
+	if ($window.width() > 992) {
+		console.log($window.width());
+		var scrollPos = $window.scrollTop();
 		var newMargin = headerMarginTop - scrollPos/2 + "px";
 		if ($homeSection.height() > 220 || scrollPos < stopPoint) {
 			$nameBanner.css("margin-top", newMargin);

@@ -53,6 +53,7 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
     infoWindow.setContent(browserHasGeolocation ?
         'Error: The Geolocation service failed.' :
         'Error: Your browser doesn\'t support geolocation.');
+
 }
 
 
@@ -82,8 +83,8 @@ RUNS THE APP
 *******************************/
 function initMap() {
     var map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: -25.363, lng: 131.044},
-        zoom: 12,
+        center: {lat: 39.9612, lng: 82.9988},
+        zoom: 1,
         disableDefaultUI: true
     });
     var infoWindow = new google.maps.InfoWindow({map: map});
