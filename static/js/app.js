@@ -1,23 +1,9 @@
 /**********************
 CACHED JQUERY SELECTORS
 ***********************/
-// Menu buttons.
-var $homeButton = $('#home');
-var $projectsButton = $('#projects');
-var $contactButton = $('#contact');
-var $resumeButton = $('#resume');
-
-// jQuery selecters.
-var $parallax = $('.parallax');
-var $contactModal = $('#contact-modal');
-var $contactForm = $('#contact-form');
-var $contactFormLoader = $('#loader');
-var $contactFormMessage = $('#contact-form-msg');
-var $nameBanner = $('#nameBanner');
-var $homeSection = $('#home-section');
-var $navContainer = $('#nav-container');
-var $techSection = $('#technologies');
-var $window = $(window);
+var $homePage = $("#home");
+var $projectsPage = $("#projects");
+var $contactPage = $("#contact");
 
 /***************
 GLOBAL VARIABLES
@@ -35,41 +21,43 @@ KNOCKOUT.JS VIEWMODEL
 function ViewModel() {
 	var self = this;
 
-	self.projectsMenuIsClosed = ko.observable(true);
+	self.currentPage = ko.observable(1);
 
-	self.Home = function() {
-		$('html, body').animate({
-			"scrollTop": "0px"
-		});
+	self.goToHome = function() {
+		$homePage.css("left", "0px");
+		$homePage.css("opacity", "1");
+		$projectsPage.css("left", "50%");
+		$projectsPage.css("opacity", "0");
+		$contactPage.css("left", "50%");
+		$contactPage.css("opacity", "0");
+		self.currentPage(1);
 	}
 
-	self.Tech = function() {
-		if ($window.width() < 992) {
-			$('html, body').animate({
-				"scrollTop": "85%"
-			});
-		} else {
-			$techSection.css("background-color", "#039dc7");
-			setTimeout(function() {
-				$techSection.css("background-color", "white");
-			}, 500);
+	self.goToProjects = function() {
+		if (self.currentPage() == 2) {
+			return -1;
+		} else if (self.currentPage() == 1) {
+			$homePage.css("left", "-50%");
+			$homePage.css("opacity", "0");
+			$projectsPage.css("left", "0px");
+			$projectsPage.css("opacity", "1");
+		} else if (self.currentPage() == 3) {
+			$projectsPage.css("left", "0px");
+			$projectsPage.css("opacity", "1");
+			$contactPage.css("left", "50%");
+			$contactPage.css("opacity", "0");
 		}
-		
+		self.currentPage(2);
 	}
 
-	self.projectsMenu = function() {
-		if (self.projectsMenuIsClosed()) {
-			$('#projects-dropdown-mobile').animate({
-				"bottom": $('#mobile-menu').height()
-			});
-			self.projectsMenuIsClosed(false);
-		} else {
-			$('#projects-dropdown-mobile').animate({
-				"bottom": "-200px"
-			});
-			self.projectsMenuIsClosed(true);
-		}
-		
+	self.goToContact = function() {
+		$homePage.css("left", "-50%");
+		$homePage.css("opacity", "0");
+		$projectsPage.css("left", "-50%");
+		$projectsPage.css("opacity", "0");
+		$contactPage.css("left", "0px");
+		$contactPage.css("opacity", "1");
+		self.currentPage(3);	
 	}
 
 	self.goToLones = function() {
@@ -82,20 +70,6 @@ function ViewModel() {
 
 	self.goToBlog = function() {
 		window.location = "http://www.blogproject-144722.appspot.com/";
-	}
-
-	self.openContactModal = function() {
-		$('#dimmer').fadeIn();
-		$contactModal.animate({
-			"top": "20%"
-		});
-	}
-
-	self.closeContactModal = function() {
-		$('#dimmer').fadeOut();
-		$contactModal.animate({
-			"top": "-100%"
-		});
 	}
 
 	// Processes and sends contact form data to server.
@@ -148,25 +122,3 @@ function ViewModel() {
 	}
 }
 ko.applyBindings(ViewModel);
-
-
-// controls parallax on name banner.
-var headerMarginTop = parseFloat($nameBanner.css('margin-top'));
-var headerMarginBtm = parseFloat($nameBanner.css('margin-bottom'));
-
-var stopPoint = 2000;
-
-$(document).scroll(function() {
-	if ($window.width() > 992) {
-		console.log($window.width());
-		var scrollPos = $window.scrollTop();
-		var newMargin = headerMarginTop - scrollPos/2 + "px";
-		if ($homeSection.height() > 220 || scrollPos < stopPoint) {
-			$nameBanner.css("margin-top", newMargin);
-			$nameBanner.css("margin-bottom", newMargin);
-		} else {
-			stopPoint = scrollPos;
-		}	
-	}
-	return false;
-});

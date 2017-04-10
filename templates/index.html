@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-	<link href="https://fonts.googleapis.com/css?family=Nunito:700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:900" rel="stylesheet">
 	<title>Jacob Gornall</title>
 	<!-- Latest compiled and minified Bootstrap CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -12,142 +12,30 @@
 	{{ JSGlue.include() }}
 </head>
 <body>
-	<header id="nav-container" class="container">
-		<nav id="nav-bar" class="row text-center">
-			<div id="home" class="col-md-3 nav-item" data-bind="click: Home">
-				<h3>Home</h3>
-			</div>
-			<div id="projects" class="col-md-3 nav-item">
-				<h3>Projects</h3>
-				<div id="projects-dropdown" class="text-center">
-					<ul>
-						<li data-bind="click: goToLones">Jacob Lones Website</li>
-						<li data-bind="click: goToMap">Neighborhood Map</li>
-						<li data-bind="click: goToBlog">Blog Site</li>
-					</ul>
-				</div>
-			</div>
-			<div id="contact" class="col-md-3 nav-item" data-bind="click: openContactModal">
-				<h3>Contact</h3>
-			</div>
-			<div id="resume" class="col-md-3 nav-item" data-bind="click: Tech">
-				<h3>Technologies</h3>
-			</div>
-		</nav>
-	</header>
-
-	<div id="mobile-menu">
-		<div class="mobile-menu-item" data-bind="click: Home">
-			<img src="{{url_for('static', filename='images/Home-50.png')}}" height="30px">
-			<p>HOME</p>
-		</div>
-		<div class="mobile-menu-item" data-bind="click: projectsMenu">
-			<img src="{{url_for('static', filename='images/Briefcase-50.png')}}" height="30px">
-			<p>PROJECTS</p>
-		</div>
-		<div class="mobile-menu-item" data-bind="click: openContactModal">
-			<img src="{{url_for('static', filename='images/Mailbox Closed Flag Down-50.png')}}" height="30px">
-			<p>CONTACT</p>
-		</div>
-		<div class="mobile-menu-item" data-bind="click: Tech">
-			<img src="{{url_for('static', filename='images/Services-50.png')}}" height="30px">
-			<p>TECH</p>
-		</div>
-	</div>
-	<div id="projects-dropdown-mobile" class="text-center">
+	<nav>
 		<ul>
-			<li data-bind="click: goToLones">JACOB LONES WEBSITE</li>
-			<li data-bind="click: goToMap">NEIGHBORHOOD MAP</li>
-			<li data-bind="click: goToBlog">BLOG SITE</li>
+			<li data-bind="click: goToHome()">Home</li>
+			<li data-bind="click: goToProjects()">Projects</li>
+			<li data-bind="click: goToContact()">Contact</li>
 		</ul>
-	</div>
-
-	<main id="main-content">
-		<section id="home-section" class="parallax" style='background-image: url("{{url_for("static", filename="images/b18trxc8upq-artem-sapegin.jpg")}}"); background-size: cover; background-position: center'>
-			<header id="nameBanner">
-				<h1>JAKE GORNALL</h1>
-				<p>Full Stack Web Developer</p>
-				<p><a href="https://github.com/jakegornall">Github</a> - <a href="https://www.linkedin.com/in/jake-gornall-a4697283">LinkedIn</a> - <a href="https://profiles.udacity.com/u/jakegornall">Udacity</a></p>
-			</header>
-		</section>
-		<section id="technologies" class="text-center container">
-			<div class="row">
-				<h1 class="col-md-12">TECHNOLOGIES</h1>
-			</div>
-			<div class="row">
-				<div class="col-md-4 tech-item">
-					<div class="tech-item-content">
-						<h2>jQuery</h2>
-						<p>Javascript Framework.</p>
-					</div>
-				</div>
-				<div class="col-md-4 tech-item">
-					<div class="tech-item-content">
-						<h2>Knockout.js</h2>
-						<p>Javascript MVVM framework.</p>
-					</div>
-				</div>
-				<div class="col-md-4 tech-item">
-					<div class="tech-item-content">
-						<h2>Python</h2>
-						<p>Programming Language. Frameworks: Flask</p>
-					</div>
-				</div>
-				<div class="col-md-4 tech-item">
-					<div class="tech-item-content">
-						<h2>C#</h2>
-						<p>Programming Language. Frameworks: ASP.NET</p>
-					</div>
-				</div>
-				<div class="col-md-4 tech-item">
-					<div class="tech-item-content">
-						<h2>Amazon Web Services (AWS)</h2>
-						<p>Linux Ubuntu Server Configuration.</p>
-					</div>
-				</div>
-				<div class="col-md-4 tech-item">
-					<div class="tech-item-content">
-						<h2>Apache</h2>
-						<p>Server Config.</p>
-					</div>
-				</div>
-				<div class="col-md-4 tech-item">
-					<div class="tech-item-content">
-						<h2>API Integration</h2>
-						<p>Connecting multiple services to one experience.</p>
-					</div>
-				</div>
-			</div>
-		</section>
-	</main>
-
-	<!-- Contact Modal -->
-	<div id="contact-modal" class="container">
+	</nav>
+	<section class="page" id="home">
+		<h1>Jake Gornall</h1>
+		<h2>Full Stack Web Developer</h2>
+		<p>A full stack web developer who specializes in data driven applications.</p>
+		<p>Core Languages: HTML5, CSS3, Javascript, Python, C#, Java.</p>
+		<p>If you have a project I can help with, please get in touch.</p>
+	</section>
+	<section class="page" id="projects">
+		<h1>Projects</h1>
+	</section>
+	<section class="page" id="contact">
 		<h1>Contact</h1>
-		<button id="close-contact-btn" class="btn btn-danger btn-xs text-center" data-bind="click: closeContactModal">X</button>
-		<img id="loader" src="{{url_for('static', filename='images/ajax-loader.gif')}}" style="display: none">
-		<p id="contact-form-msg"></p>
-		<form id="contact-form" class="form-group" data-bind="submit: contactFormProcess">
-			<label>
-				Full Name:
-				<input id="full_name" class="form-control" type="text" name="full_name" placeholder="John Doe..." required>
-			</label>
-			<br>
-			<label>
-				Email:
-				<input id="email" class="form-control" type="text" name="email" placeholder="john.doe@company.com" required>
-			</label>
-			<br>
-			<label>
-				Message:
-				<textarea id="message" class="form-control" form="contact-form" name="message" placeholder="John Doe loves you..." style="width: 100%" required></textarea>
-			</label>
-			<br>
-			<button type="submit" class="btn btn-lg btn-primary">Submit</button>
-		</form>
-	</div>
+	</section>
 
-	<div id="dimmer" data-bind="click: closeContactModal"></div>
+	<footer>
+		<p>this is the footer</p>
+	</footer>
 
 	<!-- jQuery 3.x -->
 	<script
