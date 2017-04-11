@@ -3,6 +3,7 @@
 <head>
 	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 	<link href="https://fonts.googleapis.com/css?family=Roboto:900" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Raleway:200" rel="stylesheet">
 	<title>Jacob Gornall</title>
 	<!-- Latest compiled and minified Bootstrap CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -12,25 +13,57 @@
 	{{ JSGlue.include() }}
 </head>
 <body>
+	<div id="dimmer"></div>
 	<nav>
 		<ul>
-			<li data-bind="click: goToHome()">Home</li>
-			<li data-bind="click: goToProjects()">Projects</li>
-			<li data-bind="click: goToContact()">Contact</li>
+			<li id="home-nav" data-bind="click: goToHome()">Home</li>
+			<li id="projects-nav" data-bind="click: goToProjects()">Projects</li>
+			<li id="contact-nav" data-bind="click: goToContact()">Contact</li>
 		</ul>
+		<h2>Jake Gornall | Web Developer</h2>
 	</nav>
-	<section class="page" id="home">
-		<h1>Jake Gornall</h1>
-		<h2>Full Stack Web Developer</h2>
-		<p>A full stack web developer who specializes in data driven applications.</p>
-		<p>Core Languages: HTML5, CSS3, Javascript, Python, C#, Java.</p>
-		<p>If you have a project I can help with, please get in touch.</p>
+	<section class="container page" id="home">
+		<div class="row">
+			<div class="col-md-12">
+				<h1>Full Stack Web Development</h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+				<h2>Responsive Font-End</h2>
+				<p>Building font-end UI's that look and work great on all devices for a <span class="red">seemless user experience</span>.</p>
+			</div>
+			<div class="col-md-6">
+				<h2>Powerful Back-End</h2>
+				<p>Creating <span class="red">RESTful API endpoints</span> for handeling your data and powering your application.</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<h2>Core Technologies</h2>
+				<ul id="lang-list">
+					<li><img src="{{url_for('static', filename='images/HTML5_Logo_512.png')}}" height="100px"></li>
+					<li><img src="{{url_for('static', filename='images/Badge_js-strict.png')}}" height="100px"></li>
+					<li><img src="{{url_for('static', filename='images/CSS3_Logo.png')}}" height="100px"></li>
+					<li><img src="{{url_for('static', filename='images/Python-Logo-PNG-Image.png')}}" height="100px"></li>
+					<li><img src="{{url_for('static', filename='images/oracle_java_GL.jpg')}}" height="100px"></li>
+					<li><img src="{{url_for('static', filename='images/2p4i.png')}}" height="100px"></li>
+					<li><img src="{{url_for('static', filename='images/524px-JQuery_logo.png')}}" height="100px"></li>
+				</ul>
+			</div>
+		</div>
 	</section>
 	<section class="page" id="projects">
 		<h1>Projects</h1>
 	</section>
 	<section class="page" id="contact">
 		<h1>Contact</h1>
+		<form data-bind="submit: contactFormProcess()">
+			<input id="full-name" type="text" name="full-name" placeholder="Full Name">
+			<input id="email" type="email" name="email" placeholder="Email">
+			<input id="message" type="text" name="message" placeholder="Message">
+			<button id="form-submit-btn" type="submit">Submit</button>
+		</form>
 	</section>
 
 	<footer>

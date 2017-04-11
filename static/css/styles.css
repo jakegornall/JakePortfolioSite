@@ -2,7 +2,6 @@ html, body, header {
 	margin: 0px;
 	padding: 0px;
 	font-family: 'Roboto', sans-serif;
-	text-shadow: 2px 2px 5px black;
 	color: white;
 }
 
@@ -12,8 +11,19 @@ body, html {
 }
 
 body {
-	background-image: url("/static/images/pexels-photo-337542.jpeg");
+	background-image: url("/static/images/pexels-photo.jpg");
+	background-position: center;
 	background-size: cover;
+}
+#dimmer {
+	background-color: black;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	z-index: 50;
+	opacity: .5;
+	width: 100%;
+	height: 100%;
 }
 
 .page {
@@ -21,18 +31,44 @@ body {
 	height: 100%;
 	position: fixed;
 	z-index: 9998;
-	top: 50px;
+	top: 100px;
 	opacity: 0;
 	transition: opacity 1s, left 1s;
 	text-align: center;
 }
 .page h1 {
 	font-size: 50px;
+	font-weight: bold;
+	font-family: 'Raleway', sans-serif;
+}
+.page h2 {
+	color: #669999;
+	font-size: 30px;
+	font-weight: 300;
+	font-family: 'Raleway', sans-serif;
+	transition: opacity .5s;
+}
+.page p {
+	font-family: 'Raleway', sans-serif;
+	font-size: 20px;
+	font-weight: 200;
+	transition: opacity .5s;
+}
+.red {
+	color: #D4EE9F;
+}
+
+.col-md-6 {
+	padding: 40px;
 }
 
 #home {
 	left: 0px;
 	opacity: 1;
+}
+
+.page .row {
+	margin-bottom: 40px;
 }
 
 #projects {
@@ -42,17 +78,42 @@ body {
 #contacts {
 	left: -50%;
 }
+#lang-list {
+	padding: 0 0 0 0;
+}
+#lang-list li {
+	display: inline-block;
+	padding-left: 20px;
+	padding-right: 20px;
+}
 nav {
 	position: fixed;
+	z-index: 9999;
 	top: 0;
 	left: 0;
 	width: 100%;
+	margin: 0 0 0 0;
+}
+nav h2 {
+	margin: 0 0 0 0;
+	font-weight: 300;
+	font-family: 'Raleway', sans-serif;
+	text-align: right;
+	float: right;
+	display: inline-block;
+	padding: 15px;
+}
+nav ul {
+	margin: 0 0 0 0;
+	display: inline-block;
 }
 
 nav ul li {
 	display: inline-block;
 	padding: 15px;
 	text-align: center;
+	border-bottom: 0px solid red;
+	transition: border .5s;
 }
 nav ul li:hover {
 	cursor: pointer;
@@ -67,6 +128,7 @@ footer {
 	bottom: -100px;
 	transition: bottom .5s;
 	z-index: 9999;
+	background-color: #226666;
 }
 footer:hover {
 	bottom: -50px;

@@ -4,6 +4,11 @@ CACHED JQUERY SELECTORS
 var $homePage = $("#home");
 var $projectsPage = $("#projects");
 var $contactPage = $("#contact");
+var $homeNav = $("#home-nav");
+var $projectsNav = $("#projects-nav");
+var $contactNav = $("#contact-nav");
+var $homePage_h2 = $("#home h2");
+var $homePage_p = $("#home p");
 
 /***************
 GLOBAL VARIABLES
@@ -12,7 +17,12 @@ GLOBAL VARIABLES
 /***************
 GLOBAL FUNCTIONS
 ****************/
-
+function pageSelect(selectedNav) {
+	$homeNav.css("border-bottom", "0px solid red");
+	$projectsNav.css("border-bottom", "0px solid red");
+	$contactNav.css("border-bottom", "0px solid red");
+	selectedNav.css("border-bottom", "5px solid red");
+}
 
 
 /********************
@@ -24,21 +34,31 @@ function ViewModel() {
 	self.currentPage = ko.observable(1);
 
 	self.goToHome = function() {
+		pageSelect($homeNav);
 		$homePage.css("left", "0px");
 		$homePage.css("opacity", "1");
 		$projectsPage.css("left", "50%");
 		$projectsPage.css("opacity", "0");
 		$contactPage.css("left", "50%");
 		$contactPage.css("opacity", "0");
+		setTimeout(function() {
+			$homePage_h2.css("opacity", "1");
+		}, 500);
+		setTimeout(function() {
+			$homePage_p.css("opacity", "1");
+		}, 700);
 		self.currentPage(1);
 	}
 
 	self.goToProjects = function() {
+		pageSelect($projectsNav);
 		if (self.currentPage() == 2) {
 			return -1;
 		} else if (self.currentPage() == 1) {
 			$homePage.css("left", "-50%");
 			$homePage.css("opacity", "0");
+			$homePage_h2.css("opacity", "0");
+			$homePage_p.css("opacity", "0");
 			$projectsPage.css("left", "0px");
 			$projectsPage.css("opacity", "1");
 		} else if (self.currentPage() == 3) {
@@ -51,8 +71,11 @@ function ViewModel() {
 	}
 
 	self.goToContact = function() {
+		pageSelect($contactNav);
 		$homePage.css("left", "-50%");
 		$homePage.css("opacity", "0");
+		$homePage_h2.css("opacity", "0");
+		$homePage_p.css("opacity", "0");
 		$projectsPage.css("left", "-50%");
 		$projectsPage.css("opacity", "0");
 		$contactPage.css("left", "0px");
