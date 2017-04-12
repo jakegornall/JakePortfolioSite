@@ -42,30 +42,46 @@
 			<div class="col-md-12">
 				<h2>Core Technologies</h2>
 				<ul id="lang-list">
-					<li><img src="{{url_for('static', filename='images/HTML5_Logo_512.png')}}" height="100px"></li>
-					<li><img src="{{url_for('static', filename='images/Badge_js-strict.png')}}" height="100px"></li>
-					<li><img src="{{url_for('static', filename='images/CSS3_Logo.png')}}" height="100px"></li>
-					<li><img src="{{url_for('static', filename='images/Python-Logo-PNG-Image.png')}}" height="100px"></li>
-					<li><img src="{{url_for('static', filename='images/oracle_java_GL.jpg')}}" height="100px"></li>
-					<li><img src="{{url_for('static', filename='images/2p4i.png')}}" height="100px"></li>
-					<li><img src="{{url_for('static', filename='images/524px-JQuery_logo.png')}}" height="100px"></li>
+					<li><img class="logo" src="{{url_for('static', filename='images/HTML5_Logo_512.png')}}" height="100px"></li>
+					<li><img class="logo" src="{{url_for('static', filename='images/Badge_js-strict.png')}}" height="100px"></li>
+					<li><img class="logo" src="{{url_for('static', filename='images/CSS3_Logo.png')}}" height="100px"></li>
+					<li><img class="logo" src="{{url_for('static', filename='images/Python-Logo-PNG-Image.png')}}" height="100px"></li>
+					<li><img class="logo" src="{{url_for('static', filename='images/oracle_java_GL.jpg')}}" height="100px"></li>
+					<li><img class="logo" src="{{url_for('static', filename='images/2p4i.png')}}" height="100px"></li>
+					<li><img class="logo" src="{{url_for('static', filename='images/524px-JQuery_logo.png')}}" height="100px"></li>
 				</ul>
 			</div>
 		</div>
 	</section>
 	<section class="page" id="projects">
 		<h1>Projects</h1>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4" data-bind="click: goToMap">
+					<img class="project-img" src="{{url_for('static', filename='images/map-project-img.png')}}">
+					<h2>Map Project</h2>
+				</div>
+				<div class="col-md-4" data-bind="click: goToLones">
+					<img class="project-img" src="{{url_for('static', filename='images/lones-project-img.png')}}">
+					<h2>Jacob Lones Site</h2>
+				</div>
+				<div class="col-md-4" data-bind="click: goToBlog">
+					<img class="project-img" src="{{url_for('static', filename='images/blog-project-img.png')}}">
+					<h2>Multi-User Blog</h2>
+				</div>
+			</div>
+		</div>
 	</section>
 	<section class="page" id="contact">
 		<h1>Contact</h1>
 		<form id="contact-form" data-bind="submit: contactFormProcess">
 			<input id="full-name" type="text" name="full-name" placeholder="Full Name">
 			<input id="email" type="email" name="email" placeholder="Email">
-			<input id="message" type="text" name="message" placeholder="Message">
+			<textarea id="message" placeholder="Message"></textarea>
 			<button id="form-submit-btn" type="submit">Submit</button>
 		</form>
 		<img id="contact-loader" style="display: none" src="{{url_for('static', filename='images/ajax-loader.gif')}}">
-		<h2 style="display: none" id="contact-msg"></h2>
+		<h2 id="contact-msg"></h2>
 	</section>
 
 	<footer>

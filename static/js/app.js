@@ -12,6 +12,7 @@ var $homePage_p = $("#home p");
 var $contactForm = $("#contact-form");
 var $contactFormLoader = $("#contact-loader");
 var $contactFormMessage = $("#contact-msg");
+var $logo = $(".logo");
 
 /***************
 GLOBAL VARIABLES
@@ -44,12 +45,16 @@ function ViewModel() {
 		$projectsPage.css("opacity", "0");
 		$contactPage.css("left", "50%");
 		$contactPage.css("opacity", "0");
+		$contactPage.css("z-index", "0");
 		setTimeout(function() {
 			$homePage_h2.css("opacity", "1");
-		}, 500);
+		}, 400);
 		setTimeout(function() {
 			$homePage_p.css("opacity", "1");
-		}, 700);
+		}, 600);
+		setTimeout(function() {
+			$logo.css("opacity", "1");
+		}, 800);
 		self.currentPage(1);
 	}
 
@@ -60,6 +65,7 @@ function ViewModel() {
 		} else if (self.currentPage() == 1) {
 			$homePage.css("left", "-50%");
 			$homePage.css("opacity", "0");
+			$logo.css("opacity", "0");
 			$homePage_h2.css("opacity", "0");
 			$homePage_p.css("opacity", "0");
 			$projectsPage.css("left", "0px");
@@ -70,6 +76,7 @@ function ViewModel() {
 			$contactPage.css("left", "50%");
 			$contactPage.css("opacity", "0");
 		}
+		$contactPage.css("z-index", "0");
 		self.currentPage(2);
 	}
 
@@ -79,10 +86,12 @@ function ViewModel() {
 		$homePage.css("opacity", "0");
 		$homePage_h2.css("opacity", "0");
 		$homePage_p.css("opacity", "0");
+		$logo.css("opacity", "0");
 		$projectsPage.css("left", "-50%");
 		$projectsPage.css("opacity", "0");
 		$contactPage.css("left", "0px");
 		$contactPage.css("opacity", "1");
+		$contactPage.css("z-index", "9999");
 		self.currentPage(3);	
 	}
 
@@ -130,7 +139,7 @@ function ViewModel() {
 				data: JSON.stringify(data),
 				success: function(response) {
 					$contactFormLoader.hide();
-					if (response.success === 'false') {
+					if (response.success == 'false') {
 						$contactForm.show();
 					}
 					$contactFormMessage.text(response.message);
