@@ -16,9 +16,9 @@
 	<div id="dimmer"></div>
 	<nav>
 		<ul>
-			<li id="home-nav" data-bind="click: goToHome()">Home</li>
-			<li id="projects-nav" data-bind="click: goToProjects()">Projects</li>
-			<li id="contact-nav" data-bind="click: goToContact()">Contact</li>
+			<li id="home-nav" data-bind="click: goToHome">Home</li>
+			<li id="projects-nav" data-bind="click: goToProjects">Projects</li>
+			<li id="contact-nav" data-bind="click: goToContact">Contact</li>
 		</ul>
 		<h2>Jake Gornall | Web Developer</h2>
 	</nav>
@@ -30,11 +30,11 @@
 		</div>
 		<div class="row">
 			<div class="col-md-6">
-				<h2>Responsive Font-End</h2>
+				<h2><em>Responsive</em> Font-End</h2>
 				<p>Building font-end UI's that look and work great on all devices for a <span class="red">seemless user experience</span>.</p>
 			</div>
 			<div class="col-md-6">
-				<h2>Powerful Back-End</h2>
+				<h2><em>Powerful</em> Back-End</h2>
 				<p>Creating <span class="red">RESTful API endpoints</span> for handeling your data and powering your application.</p>
 			</div>
 		</div>
@@ -58,12 +58,14 @@
 	</section>
 	<section class="page" id="contact">
 		<h1>Contact</h1>
-		<form data-bind="submit: contactFormProcess()">
+		<form id="contact-form" data-bind="submit: contactFormProcess">
 			<input id="full-name" type="text" name="full-name" placeholder="Full Name">
 			<input id="email" type="email" name="email" placeholder="Email">
 			<input id="message" type="text" name="message" placeholder="Message">
 			<button id="form-submit-btn" type="submit">Submit</button>
 		</form>
+		<img id="contact-loader" style="display: none" src="{{url_for('static', filename='images/ajax-loader.gif')}}">
+		<h2 style="display: none" id="contact-msg"></h2>
 	</section>
 
 	<footer>

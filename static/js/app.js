@@ -9,6 +9,9 @@ var $projectsNav = $("#projects-nav");
 var $contactNav = $("#contact-nav");
 var $homePage_h2 = $("#home h2");
 var $homePage_p = $("#home p");
+var $contactForm = $("#contact-form");
+var $contactFormLoader = $("#contact-loader");
+var $contactFormMessage = $("#contact-msg");
 
 /***************
 GLOBAL VARIABLES
@@ -103,7 +106,7 @@ function ViewModel() {
 		$contactFormMessage.text('');
 
 		// retrieves contact form data.
-		var full_name = $('#full_name').val();
+		var full_name = $('#full-name').val();
 		var email = $('#email').val();
 		var message = $('#message').val();
 

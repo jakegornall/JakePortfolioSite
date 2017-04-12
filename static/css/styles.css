@@ -101,6 +101,7 @@ nav h2 {
 	text-align: right;
 	float: right;
 	display: inline-block;
+	border-bottom: 5px solid red;
 	padding: 15px;
 }
 nav ul {
