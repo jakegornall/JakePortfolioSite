@@ -85,8 +85,32 @@
 	</section>
 
 	<footer>
-		<p>this is the footer</p>
+		<p>Hover or Click For More...</p>
+		<ul>
+			<li><a href="https://www.linkedin.com/in/jakegornall">LinkedIn</a></li>
+			<li><a href="https://github.com/jakegornall">Github</a></li>
+			<li><a href="https://profiles.udacity.com/u/jakegornall">Udacity</a></li>
+		</ul>
+		<ul>
+			<li><a href="{{url_for('static', filename='images/JakeResume.pdf')}}">Download Resume</a></li>
+			<li><a href="https://github.com/jakegornall/JakePortfolioSite">See Page Source Code</a></li>
+			<li><a href="" data-bind="click: openInvoiceModal">Pay Invoice</a></li>
+		</ul>
+		<ul>
+			<li><a href="" data-bind="click: goToHome">Home</a></li>
+			<li><a href="" data-bind="click: goToProjects">Projects</a></li>
+			<li><a href="" data-bind="click: goToContact">Contact</a></li>
+		</ul>
 	</footer>
+
+	<div id="inv-modal">
+		<form data-bind="submit: goToInvoice">
+			<input id="inv-num" type="text" placeholder="Enter Invoice Number">
+			<button id="inv-submit" type="submit">View Invoice</button>
+			<button id="inv-cancel" data-bind="click: closeInvModal">Close</button>
+		</form>
+		<h2 id="inv-error" style="color: red"></h2>
+	</div>
 
 	<!-- jQuery 3.x -->
 	<script

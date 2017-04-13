@@ -45,7 +45,7 @@ function ViewModel() {
 		$projectsPage.css("opacity", "0");
 		$contactPage.css("left", "50%");
 		$contactPage.css("opacity", "0");
-		$contactPage.css("z-index", "0");
+		$contactPage.css("z-index", "9996");
 		setTimeout(function() {
 			$homePage_h2.css("opacity", "1");
 		}, 400);
@@ -91,20 +91,40 @@ function ViewModel() {
 		$projectsPage.css("opacity", "0");
 		$contactPage.css("left", "0px");
 		$contactPage.css("opacity", "1");
-		$contactPage.css("z-index", "9999");
+		$contactPage.css("z-index", "9996");
 		self.currentPage(3);	
 	}
 
 	self.goToLones = function() {
-		window.location = "https://jacoblonesofficialsite.appspot.com/";
+		window.open("https://jacoblonesofficialsite.appspot.com/");
 	}
 
 	self.goToMap = function() {
-		window.location = Flask.url_for('MapProject');
+		window.open(Flask.url_for('MapProject'));
 	}
 
 	self.goToBlog = function() {
-		window.location = "http://www.blogproject-144722.appspot.com/";
+		window.open("http://www.blogproject-144722.appspot.com/");
+	}
+
+	self.openInvoiceModal = function() {
+		$('#inv-modal').fadeIn();
+		$('#dimmer').css("z-index", "9998");
+	}
+
+	self.closeInvModal = function() {
+		$('#inv-modal').fadeOut();
+		$('#dimmer').css("z-index", "50");
+	}
+
+	self.goToInvoice = function() {
+		$('#inv-error').text("");
+		var invNum = $('#inv-num').val();
+		if (invNum) {
+			window.open("https://www.paypal.com?cmd=_pay-inv&id=" + invNum.toString());
+		} else {
+			$('#inv-error').text("Invoice number required");
+		}
 	}
 
 	// Processes and sends contact form data to server.
