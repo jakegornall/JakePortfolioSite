@@ -32,6 +32,13 @@ NEIGHBORHOOD MAP PROJECT
 //      - ViewModel Extended Functions
 //      - Google placesService API supporting functions
 
+/*********************
+HTTP TO HTTPS REDIRECT
+**********************/
+if (location.protocol != 'https:')
+{
+    location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
+}
 
 
 /****************
