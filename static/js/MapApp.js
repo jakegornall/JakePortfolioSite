@@ -32,6 +32,13 @@ NEIGHBORHOOD MAP PROJECT
 //      - ViewModel Extended Functions
 //      - Google placesService API supporting functions
 
+/*********************
+HTTP TO HTTPS REDIRECT
+**********************/
+if (location.protocol != 'https:')
+{
+ location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
+}
 
 
 /****************
@@ -84,7 +91,7 @@ RUNS THE APP
 function initMap() {
     var map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: 39.9612, lng: 82.9988},
-        zoom: 1,
+        zoom: 10,
         disableDefaultUI: true
     });
     var infoWindow = new google.maps.InfoWindow({map: map});
